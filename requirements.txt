@@ -1,0 +1,4 @@
+inputimeout==1.0.4
+matlab==0.1
+matlabengine==24.1.2
+numpy==2.0.0
