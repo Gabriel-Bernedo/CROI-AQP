@@ -3,7 +3,7 @@ classdef C_Usuario
     id
     nombre
     direccion
-    electrodomesticos = C_Electrodomestico.empty;
+    electrodomesticos = {};
   end
   methods
     function obj = C_Usuario(id, nombre, direccion)
@@ -12,8 +12,8 @@ classdef C_Usuario
       obj.direccion = direccion;
     end
     function x = Add_Electrodomestico(obj, electrodomestico)
-      obj.electrodomesticos.append(electrodomestico);
-      x = true;
+      obj.electrodomesticos = {obj.electrodomesticos, electrodomestico};
+      x = obj.electrodomesticos;
     end
     function x = ConsumoTotal(obj, mes)
       x = 0;
