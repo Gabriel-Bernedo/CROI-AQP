@@ -8,9 +8,7 @@ classdef C_Electrodomestico
    end
    methods
       function obj = C_Electrodomestico(nombre, potencia, horas_dia, dia_semana, tipo)
-         if nombre == ""
-             ME = MException('C_Electrodomestico:Invalid_Param', 'Ingrese un nombre');
-            throw(ME);
+         if nombre =
          elseif dia_semana > 7 || dia_semana < 1
             ME = MException('C_Electrodomestico:Invalid_Param', 'Ingrese un número de días válido');
             throw(ME);

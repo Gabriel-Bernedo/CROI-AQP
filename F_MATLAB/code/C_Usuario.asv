@@ -17,8 +17,7 @@ classdef C_Usuario
         encontrado = false;
         for i = 1:length(obj.electrodomesticos)
             value = obj.electrodomesticos(i).nombre;
-            if  strcmp(name, value)%comparar strinf a traves string compare,
-                % hacerlo de forma "==" funciona de forma incorrecta
+            if  name == value
                 encontrado = true;
                 break;
             end
@@ -34,14 +33,17 @@ classdef C_Usuario
         name = electrodomestico.nombre;
         for i = 1:length(obj.electrodomesticos)
             value = obj.electrodomesticos(i).nombre;
-            if  strcmp(name, value)
+            if  name == value
                 obj.electrodomesticos(i).potencia = electrodomestico.potencia;
                 obj.electrodomesticos(i).horas_dia = electrodomestico.horas_dia;
-                obj.electrodomesticos(i).dia_semana = electrodomestico.dia_semana;
-                obj.electrodomesticos(i).tipo = electrodomestico.tipo;
+                obj.electrodomesticos(i).dia_semana = electrodomestico.potencia;
+                obj.electrodomesticos(i).potencia = electrodomestico.potencia;
                 break;
             end
         end
+      horas_dia
+      dia_semana
+      tipo
     end
     function x = ConsumoTotal(obj, mes)
       x = 0;
