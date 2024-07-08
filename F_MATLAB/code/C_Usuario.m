@@ -71,5 +71,6 @@ classdef C_Usuario
             warning('No hay electrodomésticos para eliminar.');
         end
     end
+    
   end
 end
