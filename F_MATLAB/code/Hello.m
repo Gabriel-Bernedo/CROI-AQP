@@ -262,6 +262,7 @@ classdef Hello < matlab.apps.AppBase
 
             % Delete UIFigure when app is deleted
             delete(app.UIFigure)
+            %adasdasdadasd
         end
     end
 end
