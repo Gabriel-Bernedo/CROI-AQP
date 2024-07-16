@@ -11,5 +11,3 @@ classdef C_Sistema
     end
   end
 end
-
-% Probando Commit desde Gabo
