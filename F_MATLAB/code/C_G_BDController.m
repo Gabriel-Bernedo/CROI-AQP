@@ -15,15 +15,24 @@ classdef C_G_BDController
       end
       obj.connection = conn;
     end
-    function [outputArg1,outputArg2] = save_Electrodomestico(obj,register)
+    function x= save_Electrodomestico(obj,register)
 
       sqlquery = sprintf("INSERT INTO electrodomesticos (nombre, consumo, horas, dias, tipo) VALUES ('%s', %d, %d, %d, '%s')", nombre, consumo, horas, dias, tipo);
 
       exec(conn, sqlquery);
       %METHOD1 Summary of this method goes here
       %   Detailed explanation goes here
-      outputArg1 = inputArg1;
-      outputArg2 = inputArg2;
+    end
+    function x = read_Electrodomestico(obj)
+      x = C_Electrodomestico.empty;
+      sqlquery = sprintf("SELECT * from electrodomesticos");
+
+      res = sqlread(conn, "electrodomesticos");
+      for i = 1:length(res)
+        x(i) = C_Electrodomestico(res(i).nombre, res(i).consumo, res(i).horas, res(i).dias, res(i).tipo);
+      end
+      %METHOD1 Summary of this method goes here
+      %   Detailed explanation goes here
     end
   end
 end
