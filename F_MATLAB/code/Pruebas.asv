@@ -1,0 +1,8 @@
+%{
+ejemplo con mi recivo de luz, consumo = 157mil kWh al mes
+se duerme 8 horas, por lo cual el consumo se basa en DVR, camaras y refri
+quedando 16 horas de uso aproximado
+consumo diario = 5233
+consumo por hora aprox(no pico, sino promedio) = 5233/16
+%}
+calc = C_Calculator();
