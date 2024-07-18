@@ -9,6 +9,7 @@ classdef C_Calculator
         horasConRad = 0
         horasSinRad = 0
         consumoSinRad = 0
+        tipoInversor
     end
     
     methods
@@ -24,15 +25,15 @@ classdef C_Calculator
                 obj.tipoPan = 150;
             elseif obj.consumoHora >1000 && obj.consumoHora < 3000
                 obj.cantPan = ceil(obj.consumoSinRad/(550*obj.horasConRad));
-                if mod(obj.cantBat, 2) == 1
-                    obj.cantBat = obj.cantBat +1;
+                if mod(obj.tipoPan, 2) == 1
+                    obj.tipoPan = obj.tipoPan +1;
                 end
                 obj.tipoPan = 550;
             elseif obj.consumoHora >3000 && obj.consumoHora < 5000
                 obj.cantPan = ceil(obj.consumoSinRad/(550*obj.horasConRad));
-                sobra =  mod(obj.cantPan, 4);
+                sobra =  mod(obj.tipoPan, 4);
                 if sobra > 0
-                    obj.cantBat = obj.cantBat +(4-sobra);
+                    obj.tipoPan = obj.tipoPan +(4-sobra);
                 end
                 obj.tipoPan = 550;
             else
@@ -40,6 +41,7 @@ classdef C_Calculator
                 %dependeria de la admision del inversor
                 obj.tipoPan = 550;
             end
+            fprintf('La energia requerida por hora es: %.2f Watts\n', obj.consumoSinRad/obj.horasConRad);
             fprintf('La cantidad de paneles de %d Ah es: %d\n', obj.tipoPan, obj.cantPan);
         end
         
@@ -59,7 +61,7 @@ classdef C_Calculator
                 %250 3000 110
                 %300 3600 1330
                 %600 7200 1628
-                %crear minimodelo usaremos 100 temporalmente
+                %crear minimodelo usaremos 100Ah temporalmente
                 %amp = Watts/12(ya que es el voltaje de TODAS las baterias)
                 obj.cantBat = ceil(obj.consumoSinRad/1200);
                 obj.tipoBat = 100;
@@ -92,6 +94,31 @@ classdef C_Calculator
             end
             fprintf('La capacidad de almacenamiento requerida es %.2f Amp\n',obj.consumoSinRad/12);
             fprintf('La cantidad de baterias de %d Ah es: %d\n', obj.tipoBat, obj.cantBat);
+            %fprintf('El costo es de las baterias es %d soles\n', costo);
+        end
+        function obj = Calc_Inversor(obj)
+            % 600 - 2000 -> 12v, 3000 -> 24V, 5000 -> 48
+            potencias = [600, 1000, 2000, 3000, 5000];
+            costos = [140, 270, 1000, 1400, 3000];
+            valor = obj.consumoHora;             
+            % Convertir la lista de celdas a un array numérico
+            %lista_pot = cell2mat(potencias);
+            %lista_cos = cell2mat(costos);
+            %dict = containers.Map(lista_pot, lista_cos);
+
+            dict = containers.Map(potencias, costos);
+            % Encontrar los valores en la lista que son mayores que el valor dado
+            valores_mayores = potencias(potencias > valor);
+            
+            % Encontrar el valor más pequeño entre los valores mayores
+            if ~isempty(valores_mayores)
+                valor_proximo_superior = min(valores_mayores);
+                costo = dict(valor_proximo_superior);
+                fprintf('El valor más próximo superior a %.2f es %d\n', valor, valor_proximo_superior);
+                fprintf('El costo es del inversor es %d soles\n', costo);
+            else
+                fprintf('No hay valores superiores a %.2f en la lista\n', valor);
+            end
         end
     end
 end

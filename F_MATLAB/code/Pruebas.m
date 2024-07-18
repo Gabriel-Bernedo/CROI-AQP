@@ -11,5 +11,6 @@ consumo diario = 5233
 calc = C_Calculator(5233, 5, 18); 
 % se debe tener 5 baterias de 100Ah para 5233, 5, 18
 calc = calc.Calc_Cant_Baterias();
-% se debe tener 8 baterias de 150Ah para 5233, 5, 18
+% se debe tener 8 paneles de 150Ah para 5233, 5, 18
 calc = calc.Calc_Cant_Paneles();
+calc = calc.Calc_Inversor();
