@@ -15,10 +15,10 @@ classdef AppPanel
             label.Text = "Hello";
         end
         
-        function outputArg = method1(obj,inputArg)
+        function outputArg = method1(inputArg)
             %METHOD1 Summary of this method goes here
             %   Detailed explanation goes here
-            outputArg = obj.Property1 + inputArg;
+            outputArg =  inputArg;
         end
     end
 end

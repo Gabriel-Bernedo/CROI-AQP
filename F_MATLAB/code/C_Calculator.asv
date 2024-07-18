@@ -1,0 +1,38 @@
+classdef C_Calculator    
+    properties
+        consumoDia = 0
+        consumoHora = 0
+        cantBat = 0
+        cantPan = 0
+    end
+    
+    methods
+        function obj = C_Calculator(consumoPicoPorHora)
+            obj.consumoHora = consumoPicoPorHora;
+        end
+        
+        function cantBat = Calc_Cant_Baterias(obj)
+            % calcula la cantidad de baterias necesarias
+            consumo = obj.consumoHora;
+            cantBat;
+            if consumo < 1000
+                %100AH	516
+                %150AH	708
+                %250 110
+                %300 1330
+                %600 1628
+                %crear minimodelo usaremos 100 temporalmente
+               cantBat = ceil(consumo/100);
+            elseif consumo >1000 && consumo < 3000
+                cantBat = ceil(consumo/300);
+            elseif consumo > 3000 && consumo < 5000
+                cantBat = ceil(consumo/600);
+            else
+                %inversores mas complejos, para todo un departamento o
+                %industrias (no es nuestro enfoque)
+            end
+            cantBat = obj.cantBat;
+        end
+    end
+end
+
