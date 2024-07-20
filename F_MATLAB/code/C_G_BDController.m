@@ -52,11 +52,11 @@ classdef C_G_BDController
       % sqlquery = sprintf("SELECT * from electrodomesticos");
 
       
-      x = C_Electrodomestico.empty(height(res), 0);
+      x = C_G_Electrodomestico.empty(height(res), 0);
 
       % Crea un objeto C_Electrodomestico por cada registro
       for i = 1:height(res)
-        x(i) = C_Electrodomestico(res{i,2}, res{i,3}, res{i,4}, res{i,5}, res{i,6});
+        x(i) = C_G_Electrodomestico(res{i,2}, res{i,3}, res{i,4}, res{i,5}, res{i,6});
       end
       %METHOD1 Summary of this method goes here
       %   Detailed explanation goes here
