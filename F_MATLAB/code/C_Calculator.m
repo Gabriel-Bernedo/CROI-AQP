@@ -13,6 +13,7 @@ classdef C_Calculator
         costos = [0,0,0]%paneles, baterias, inversor
         costoTotal = 0
     end
+    %
     methods
         %Rad = Radiacion solar
         function obj = C_Calculator(consumoDia, horasConRad, horasSinRad)
@@ -21,6 +22,9 @@ classdef C_Calculator
             obj.horasSinRad = horasSinRad;
         end
         function obj = Calc_Total(obj)
+            obj = Calc_Cant_Paneles(obj);
+            obj = Calc_Cant_Baterias(obj);
+            obj =  Calc_Inversor(obj);
             obj.costoTotal = obj.costos(1) + obj.costos(2) + obj.costos(3);
             fprintf('El costo total es %d soles\n', obj.costoTotal);
         end
@@ -30,23 +34,20 @@ classdef C_Calculator
             150	475
             460	520
             550	600
+sistema de 12V
             %}
             if obj.consumoHora < 1000
                 obj.cantPan = ceil(obj.consumoSinRad/(150*obj.horasConRad));
                 obj.tipoPan = 150;
                 obj.costos(1) = obj.cantPan*475;
             else
-                if obj.consumoHora >1000 && obj.consumoHora < 3000
+                if obj.consumoHora >1000 && obj.consumoHora < 3000%24V
+                    obj.cantPan = ceil(obj.consumoSinRad/(550*obj.horasConRad));
+                    obj.tipoPan = 550;
+                elseif obj.consumoHora >3000 && obj.consumoHora < 5000%48V
                     obj.cantPan = ceil(obj.consumoSinRad/(550*obj.horasConRad));
                     if mod(obj.tipoPan, 2) == 1
                         obj.tipoPan = obj.tipoPan +1;
-                    end
-                    obj.tipoPan = 550;
-                elseif obj.consumoHora >3000 && obj.consumoHora < 5000
-                    obj.cantPan = ceil(obj.consumoSinRad/(550*obj.horasConRad));
-                    sobra =  mod(obj.tipoPan, 4);
-                    if sobra > 0
-                        obj.tipoPan = obj.tipoPan +(4-sobra);
                     end
                     obj.tipoPan = 550;
                 else
@@ -78,8 +79,9 @@ classdef C_Calculator
                 %600 7200 1628
                 %crear minimodelo usaremos 100Ah temporalmente
                 %amp = Watts/12(ya que es el voltaje de TODAS las baterias)
-                obj.cantBat = ceil(obj.consumoSinRad/1200);
-                obj.tipoBat = 100;
+                %P=I.V -> potencia =  intensidad * volatje 
+                obj.cantBat = ceil(obj.consumoSinRad/1200);%watts, potencia
+                obj.tipoBat = 100;%amperios
                 obj.costos(2) = obj.cantBat*516;
             elseif obj.consumoHora >1000 && obj.consumoHora < 3000
                 %cantBat debe ser multiplo de 2, ya que se necesita poner
