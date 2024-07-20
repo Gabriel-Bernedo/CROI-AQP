@@ -13,4 +13,6 @@ calc = C_Calculator(5233, 5, 18);
 calc = calc.Calc_Cant_Baterias();
 % se debe tener 8 paneles de 150Ah para 5233, 5, 18
 calc = calc.Calc_Cant_Paneles();
+% debe de re
 calc = calc.Calc_Inversor();
+calc = calc.Calc_Total();
