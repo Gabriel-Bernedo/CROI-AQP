@@ -19,25 +19,30 @@
 %}
 classdef C_G_Sistema
   properties
-    modelo_Panel
+    modelo_Paneles
     modelo_Baterias
     modelo_inversores
+    cantidad_Paneles
+    cantidad_Baterias
+    cantidad_Inversores
   end
   methods
     function x = C_G_Sistema(Costo_TOTAL,Ahorros_Ani)
         x = Costo_TOTAL / Ahorros_Ani;
     end
     function obj = config_Paneles(obj, paneles)
-      obj.paneles = paneles;
+      obj.modelo_Paneles = paneles;
     end
     function obj = config_Baterias(obj, baterias)
-      obj.baterias = baterias;
+      obj.modelo_Baterias = baterias;
     end
     function obj = config_Inversores(obj, inversores)
-      obj.inversores = inversores;
+      obj.modelo_inversores = inversores;
     end
-    function x = calc_sistema(obj, consumo_Mensual, consumo_Diario, potencia_Pico)
-    
+    function obj = calc_sistema(obj, consumo_Mensual, consumoHora, potencia_Pico)
+      obj.cantidad_Inversores = 1;
+      obj.cantidad_Baterias = 10;
+      obj.cantidad_Paneles = 10;
     end
   end
 end
