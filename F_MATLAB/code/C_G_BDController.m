@@ -47,6 +47,8 @@ classdef C_G_BDController
       %METHOD1 Summary of this method goes here
       %   Detailed explanation goes here
     end
+
+    %funciona!
     function x = read_Electrodomestico(obj)
       res = sqlread(obj.connection, "electrodomesticos");
       % sqlquery = sprintf("SELECT * from electrodomesticos");
@@ -61,45 +63,51 @@ classdef C_G_BDController
       %METHOD1 Summary of this method goes here
       %   Detailed explanation goes here
     end
+
+    %funciona!
     function x = read_Paneles(obj)
       res = sqlread(obj.connection, "panelsolar");
       % sqlquery = sprintf("SELECT * from electrodomesticos");
 
       
-      x = C_Paneles.empty(height(res), 0);
+      x = C_G_Paneles.empty(height(res), 0);
 
       % Crea un objeto C_Electrodomestico por cada registro
       for i = 1:height(res)
-        x(i) = C_Paneles(res{i,2}, res{i,3}, res{i,4}, res{i,5}, res{i,6}, res{i,7});
+          x(i) = C_G_Paneles(res{i,1}, res{i,2}, res{i,3}, res{i,4}, res{i,5}, res{i,6}, res{i,7});
+
       end
       %METHOD1 Summary of this method goes here
       %   Detailed explanation goes here
     end
+
+    %funciona!
     function x = read_Baterias(obj)
       res = sqlread(obj.connection, "bateria");
       % sqlquery = sprintf("SELECT * from electrodomesticos");
 
       
-      x = C_Bateria.empty(height(res), 0);
+      x = C_G_Bateria.empty(height(res), 0);
 
       % Crea un objeto C_Electrodomestico por cada registro
       for i = 1:height(res)
-        x(i) = C_Bateria(res{i,2}, res{i,3}, res{i,4},res{i,5}, res{i,7}, res{i,8}, res{i,6}, res{i,9});
-        fprintf ("XD \n");
+          x(i) = C_G_Bateria(res{i,1}, res{i,2}, res{i,3}, res{i,4}, res{i,5}, res{i,6}, res{i,7}, res{i,8}, res{i,9});
       end
       %METHOD1 Summary of this method goes here
       %   Detailed explanation goes here
     end
+
+    %funciona!
     function x = read_Inversor(obj)
       res = sqlread(obj.connection, "inversor");
       % sqlquery = sprintf("SELECT * from electrodomesticos");
 
       
-      x = C_Electrodomestico.empty(height(res), 0);
+      x = C_G_Inversor.empty(height(res), 0);
 
       % Crea un objeto C_Electrodomestico por cada registro
       for i = 1:height(res)
-        x(i) = C_Electrodomestico(res{i,2}, res{i,3}, res{i,4},res{i,5}, res{i,7}, res{i,8}, res{i,6}, res{i,9});
+          x(i) = C_G_Inversor(res{i, 1}, res{i, 2}, res{i, 3}, res{i, 4}, res{i, 6});
       end
       %METHOD1 Summary of this method goes here
       %   Detailed explanation goes here

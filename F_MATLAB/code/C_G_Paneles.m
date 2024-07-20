@@ -1,5 +1,5 @@
 classdef C_G_Paneles
-  properties (Access = private)
+  properties
     IDPanelSolar;
     nombre;
     largo;
