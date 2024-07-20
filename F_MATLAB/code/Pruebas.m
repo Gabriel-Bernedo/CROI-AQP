@@ -19,3 +19,5 @@ calc = C_Calculator(5233, 5, 18);
 %total de la instalacion
 calc = calc.Calc_Total();
 retorno = C_Calc_Retorno(calc.costoTotal, 5233);
+
+%ME QUIERO MORIIIIIIIIIIIIIIIIIIIIIIIIIIIR (nio :v)
