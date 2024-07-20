@@ -1,8 +1,9 @@
 function x = FC_limpiarValores(app)
  %el tipo y el nombre vuelvan a sus valores iniciales
-    app.PotenciaEnWattsEditField.Value = 0;
-    app.UsoEnHorasEditField.Value = 0;
-    app.CantidadDiasEditField.Value = 0;
-    app.TipoDropDown.Value = "Esencial";
+    app.Fi_PotenciaEnWatts_1.Value = 0;
+    app.Fi_HorasDias_1.Value = 0;
+    app.Fi_HorasNoche_1.Value = 0;
+    app.Fi_Uso_Semana_1 = 0;
+    app.Tipo_anadir_1.Value = "Esencial";
     app.NombreEditField.Value = "";
 end

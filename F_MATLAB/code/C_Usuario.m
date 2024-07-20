@@ -39,6 +39,7 @@ classdef C_Usuario
             if  strcmp(name, value)
                 obj.electrodomesticos(i).potencia = electrodomestico.potencia;
                 obj.electrodomesticos(i).horas_dia = electrodomestico.horas_dia;
+                obj.electrodomesticos(i).horas_noche = electrodomestico.horas_noche;
                 obj.electrodomesticos(i).dia_semana = electrodomestico.dia_semana;
                 obj.electrodomesticos(i).tipo = electrodomestico.tipo;
                 break;

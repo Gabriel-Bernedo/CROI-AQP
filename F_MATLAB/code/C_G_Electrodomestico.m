@@ -23,6 +23,7 @@ classdef C_G_Electrodomestico
       nombre
       potencia
       horas_dia
+      horas_noche
       dia_semana
       tipo
    end
@@ -38,6 +39,9 @@ classdef C_G_Electrodomestico
          elseif horas_dia > 24 || horas_dia < 1
             ME = MException('C_Electrodomestico:Invalid_Param', 'Ingrese un número de horas válido');
             throw(ME);
+         elseif horas_noche> 24 || horas_noche < 1
+            ME = MException('C_Electrodomestico:Invalid_Param', 'Ingrese un número de horas válido');
+            throw(ME);
          elseif dia_semana > 7 || dia_semana < 1
             ME = MException('C_Electrodomestico:Invalid_Param', 'Ingrese un número de días válido');
             throw(ME);
@@ -45,6 +49,7 @@ classdef C_G_Electrodomestico
             obj.nombre = nombre;
             obj.potencia = potencia;
             obj.horas_dia = horas_dia;
+            obj.horas_noche = horas_noche;   
             obj.dia_semana = dia_semana;
             obj.tipo = tipo;
          end
@@ -52,7 +57,7 @@ classdef C_G_Electrodomestico
       function x = ConsumoTotal(obj, mes)
           %calcula el consumo total de n meses
         %donde n = parametro mes
-         x = obj.potencia * obj.horas_dia * obj.dia_semana * 4 *mes;
+         x = obj.potencia * (obj.horas_dia + obj.horas_noche) * obj.dia_semana * 4 *mes;
          if obj.tipo == "Esencial"
                x = x * 0.80;
          elseif obj.tipo == "No Esencial"
