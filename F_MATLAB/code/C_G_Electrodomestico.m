@@ -20,6 +20,7 @@
 
 classdef C_G_Electrodomestico
    properties
+      id
       nombre
       potencia
       horas_dia
@@ -27,21 +28,22 @@ classdef C_G_Electrodomestico
       tipo
    end
    methods
-      function obj = C_G_Electrodomestico(nombre, potencia, horas_dia, dia_semana, tipo)
-          %captura de excepciones de entrada de parametros invalidos
-         if nombre == ""
-             ME = MException('C_Electrodomestico:Invalid_Param', 'Ingrese un nombre');
+      function obj = C_G_Electrodomestico(id, nombre, potencia, horas_dia, dia_semana, tipo)
+          % Captura de excepciones de entrada de parámetros inválidos
+         if strcmp(nombre, "")
+             ME = MException('C_G_Electrodomestico:Invalid_Param', 'Ingrese un nombre');
             throw(ME);
          elseif potencia < 1
-            ME = MException('C_Electrodomestico:Invalid_Param', 'Ingrese un consumo válido (> 0)');
+            ME = MException('C_G_Electrodomestico:Invalid_Param', 'Ingrese un consumo válido (> 0)');
             throw(ME);
          elseif horas_dia > 24 || horas_dia < 1
-            ME = MException('C_Electrodomestico:Invalid_Param', 'Ingrese un número de horas válido');
+            ME = MException('C_G_Electrodomestico:Invalid_Param', 'Ingrese un número de horas válido');
             throw(ME);
          elseif dia_semana > 7 || dia_semana < 1
-            ME = MException('C_Electrodomestico:Invalid_Param', 'Ingrese un número de días válido');
+            ME = MException('C_G_Electrodomestico:Invalid_Param', 'Ingrese un número de días válido');
             throw(ME);
-         else%agrega un objeto de forma exitosa
+         else % Agrega un objeto de forma exitosa
+            obj.id = id;
             obj.nombre = nombre;
             obj.potencia = potencia;
             obj.horas_dia = horas_dia;
@@ -49,13 +51,14 @@ classdef C_G_Electrodomestico
             obj.tipo = tipo;
          end
       end
+      
       function x = ConsumoTotal(obj, mes)
-          %calcula el consumo total de n meses
-        %donde n = parametro mes
-         x = obj.potencia * obj.horas_dia * obj.dia_semana * 4 *mes;
-         if obj.tipo == "Esencial"
+          % Calcula el consumo total de n meses
+          % Donde n = parametro mes
+         x = obj.potencia * obj.horas_dia * obj.dia_semana * 4 * mes;
+         if strcmp(obj.tipo, "Esencial")
                x = x * 0.80;
-         elseif obj.tipo == "No Esencial"
+         elseif strcmp(obj.tipo, "No Esencial")
                x = x * 0.60;
          end
       end

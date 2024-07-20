@@ -115,7 +115,7 @@ classdef C_G_BDController
       %   Detailed explanation goes here
     end
 
-    %metodo delete y update funcionan
+    %metodo delete y upda
     function delete_Electrodomestico(obj, id)
       sqlquery = sprintf("DELETE FROM electrodomesticos WHERE id = %d", id);
       exec(obj.connection, sqlquery);
