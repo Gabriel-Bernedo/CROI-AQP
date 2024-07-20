@@ -1,3 +1,7 @@
+% app = Aplicacion
+% view = instancia de vista
+
+% Con respecot a view, cambiar las vistas de app : Paneles
 function x = FC_showView(app, view)
     app.Panel.Visible = "off";
     app.Panel2.Visible = "off";
@@ -36,3 +40,4 @@ function x = FC_showView(app, view)
             fprintf("Vistan invalida ");
     end
 end
+% No roetorna nada

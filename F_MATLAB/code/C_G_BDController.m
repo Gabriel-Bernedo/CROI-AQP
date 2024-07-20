@@ -15,7 +15,7 @@ classdef C_G_BDController
       end
       obj.connection = conn;
     end
-    function x= save_Electrodomestico(obj,register)
+    function x = save_Electrodomestico(obj,register)
 
       sqlquery = sprintf("INSERT INTO electrodomesticos (nombre, consumo, horas, dias, tipo) VALUES ('%s', %d, %d, %d, '%s')", nombre, consumo, horas, dias, tipo);
 
@@ -24,12 +24,58 @@ classdef C_G_BDController
       %   Detailed explanation goes here
     end
     function x = read_Electrodomestico(obj)
-      x = C_Electrodomestico.empty;
-      sqlquery = sprintf("SELECT * from electrodomesticos");
+      res = sqlread(obj.connection, "electrodomesticos");
+      % sqlquery = sprintf("SELECT * from electrodomesticos");
 
-      res = sqlread(conn, "electrodomesticos");
-      for i = 1:length(res)
-        x(i) = C_Electrodomestico(res(i).nombre, res(i).consumo, res(i).horas, res(i).dias, res(i).tipo);
+      
+      x = C_Electrodomestico.empty(height(res), 0);
+
+      % Crea un objeto C_Electrodomestico por cada registro
+      for i = 1:height(res)
+        x(i) = C_Electrodomestico(res{i,2}, res{i,3}, res{i,4}, res{i,5}, res{i,6});
+      end
+      %METHOD1 Summary of this method goes here
+      %   Detailed explanation goes here
+    end
+    function x = read_Paneles(obj)
+      res = sqlread(obj.connection, "panelsolar");
+      % sqlquery = sprintf("SELECT * from electrodomesticos");
+
+      
+      x = C_Paneles.empty(height(res), 0);
+
+      % Crea un objeto C_Electrodomestico por cada registro
+      for i = 1:height(res)
+        x(i) = C_Paneles(res{i,2}, res{i,3}, res{i,4}, res{i,5}, res{i,6}, res{i,7});
+      end
+      %METHOD1 Summary of this method goes here
+      %   Detailed explanation goes here
+    end
+    function x = read_Baterias(obj)
+      res = sqlread(obj.connection, "bateria");
+      % sqlquery = sprintf("SELECT * from electrodomesticos");
+
+      
+      x = C_Bateria.empty(height(res), 0);
+
+      % Crea un objeto C_Electrodomestico por cada registro
+      for i = 1:height(res)
+        x(i) = C_Bateria(res{i,2}, res{i,3}, res{i,4},res{i,5}, res{i,7}, res{i,8}, res{i,6}, res{i,9});
+        fprintf ("XD \n");
+      end
+      %METHOD1 Summary of this method goes here
+      %   Detailed explanation goes here
+    end
+    function x = read_Inversor(obj)
+      res = sqlread(obj.connection, "inversor");
+      % sqlquery = sprintf("SELECT * from electrodomesticos");
+
+      
+      x = C_Electrodomestico.empty(height(res), 0);
+
+      % Crea un objeto C_Electrodomestico por cada registro
+      for i = 1:height(res)
+        x(i) = C_Electrodomestico(res{i,2}, res{i,3}, res{i,4},res{i,5}, res{i,7}, res{i,8}, res{i,6}, res{i,9});
       end
       %METHOD1 Summary of this method goes here
       %   Detailed explanation goes here
