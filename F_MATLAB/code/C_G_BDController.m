@@ -1,12 +1,35 @@
+%{
+
+% C_G_BDController
+
+# CONSTRUCTORES
+
+% !!! bd = C_G_BDController();                      // Controlador generico
+% bd = C_G_BDController(dbname, username, password) // Controlador apropiado
+  % dbname : nombre de la BD
+  % username : nombre de usuario de BD
+  % password : contraseña de usuario de BD
+// Base de datos en loclahost:3306
+
+# METODOS DE INSTANCIA
+
+% bd.save_Electrodomestico(register)                // Guardar un electrodomestico
+  % register : instancia de Electrodomestico
+
+% bd.read_Electrodomestico()                        // Leer todos los electrodomesticos
+% bd.read_Paneles()                                 // Leer todos los paneles
+% bd.read_Baterias()                                // Leer todas las baterias
+% bd.read_Inversor()                                // Leer todos los inversores
+%}
 classdef C_G_BDController
   properties (Access = private)
     connection;
   end
   methods
-    function obj = C_G_BDController()
-      dbname = 'croi_aqp';
-      username = 'root';
-      password = 'Gabokiller0711';
+    function obj = C_G_BDController(dbname, username, password)
+      % dbname = 'croi_aqp';
+      % username = 'root';
+      % password = 'Gabokiller0711';
       % driver = 'com.mysql.cj.jdbc.Driver';
       % url = 'jdbc:mysql://localhost:3306';
       conn = database(dbname, username, password);
