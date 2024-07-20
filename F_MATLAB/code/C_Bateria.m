@@ -1,3 +1,7 @@
+%{
+
+%}
+
 classdef C_Bateria
   properties (Access = private)
     IDBateria;

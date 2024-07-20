@@ -1,3 +1,22 @@
+%{
+
+% C_Electrodomestico
+
+% electro = C_Electrodomestico(nombre, potencia, horas_dia, dia_semana, tipo)
+   % nombre: nombre del electrodomestico
+   % potencia: consumo en watts
+   % horas_dia: horas de uso diario
+   % dia_semana: dias de uso a la semana
+   % tipo: tipo de electrodomestico (Altamente Esecial, Esencial, No Esencial)
+
+# METODOS DE OBJETO
+% electro.consumoTotal(mes)                // Consumo total de n meses
+   % mes : numero de meses
+// Otros usos
+   % electro.consumoTotal(1)              // Consumo total de 1 mes
+   
+%}
+
 classdef C_Electrodomestico
    properties
       nombre
