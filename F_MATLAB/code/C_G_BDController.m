@@ -17,6 +17,7 @@
   % register : instancia de Electrodomestico
 
 % bd.read_Electrodomestico()                        // Leer todos los electrodomesticos
+
 % bd.read_Paneles()                                 // Leer todos los paneles
 % bd.read_Baterias()                                // Leer todas las baterias
 % bd.read_Inversor()                                // Leer todos los inversores
@@ -38,9 +39,9 @@ classdef C_G_BDController
       end
       obj.connection = conn;
     end
-    function x = save_Electrodomestico(obj,register)
+    function x = save_Electrodomestico(obj, register )
 
-      sqlquery = sprintf("INSERT INTO electrodomesticos (nombre, consumo, horas, dias, tipo) VALUES ('%s', %d, %d, %d, '%s')", nombre, consumo, horas, dias, tipo);
+      sqlquery = sprintf("INSERT INTO electrodomesticos (nombre, consumo, horas, dias, tipo) VALUES ('%s', %d, %d, %d, '%s')", register.nombre, consumo, horas, dias, tipo);
 
       exec(conn, sqlquery);
       %METHOD1 Summary of this method goes here
