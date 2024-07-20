@@ -1,8 +1,8 @@
 %{
 
-% C_Electrodomestico
+% C_G_Electrodomestico
 
-% electro = C_Electrodomestico(nombre, potencia, horas_dia, dia_semana, tipo)
+% electro = C_G_Electrodomestico(nombre, potencia, horas_dia, dia_semana, tipo)
    % nombre: nombre del electrodomestico
    % potencia: consumo en watts
    % horas_dia: horas de uso diario
@@ -14,10 +14,11 @@
    % mes : numero de meses
 // Otros usos
    % electro.consumoTotal(1)              // Consumo total de 1 mes
-   
+// Verificar consideracion del tipo para el calulo (Para los devs del Backend)
+
 %}
 
-classdef C_Electrodomestico
+classdef C_G_Electrodomestico
    properties
       nombre
       potencia
@@ -26,7 +27,7 @@ classdef C_Electrodomestico
       tipo
    end
    methods
-      function obj = C_Electrodomestico(nombre, potencia, horas_dia, dia_semana, tipo)
+      function obj = C_G_Electrodomestico(nombre, potencia, horas_dia, dia_semana, tipo)
           %captura de excepciones de entrada de parametros invalidos
          if nombre == ""
              ME = MException('C_Electrodomestico:Invalid_Param', 'Ingrese un nombre');
