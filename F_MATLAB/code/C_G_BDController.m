@@ -39,11 +39,13 @@ classdef C_G_BDController
       end
       obj.connection = conn;
     end
+
+    %funciona!
     function x = save_Electrodomestico(obj, register )
-
-      sqlquery = sprintf("INSERT INTO electrodomesticos (nombre, consumo, horas, dias, tipo) VALUES ('%s', %d, %d, %d, '%s')", register.nombre, consumo, horas, dias, tipo);
-
-      exec(conn, sqlquery);
+      sqlquery = sprintf("INSERT INTO electrodomesticos (nombre, consumo, horas, dias, tipo) VALUES ('%s', %d, %d, %d, '%s')", ...
+                       register.nombre, register.potencia, register.horas_dia, register.dia_semana, register.tipo);
+    
+      exec(obj.connection, sqlquery);
       %METHOD1 Summary of this method goes here
       %   Detailed explanation goes here
     end
