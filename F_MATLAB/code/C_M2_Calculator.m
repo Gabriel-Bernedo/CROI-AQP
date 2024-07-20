@@ -1,4 +1,16 @@
-classdef C_Calculator    
+%{
+
+% C_M2_Calculator
+
+# CONSTRUCTOR
+
+% solver = C_M2_Calculator(consumoDia, horasConRad, horasSinRad)
+  % consumoDia: consumo diario del usuario
+  % horasConRad: horas de radiacion solar
+  % horasSinRad: horas sin radiacion solar
+
+%}
+classdef C_M2_Calculator    
     properties
         consumoDia = 0
         consumoHora = 0
@@ -10,13 +22,13 @@ classdef C_Calculator
         horasSinRad = 0
         consumoSinRad = 0
         tipoInversor
-        costos = [0,0,0]%paneles, baterias, inversor
+        costos = [0,0,0] %paneles, baterias, inversor
         costoTotal = 0
     end
     %
     methods
         %Rad = Radiacion solar
-        function obj = C_Calculator(consumoDia, horasConRad, horasSinRad)
+        function obj = C_M2_Calculator(consumoDia, horasConRad, horasSinRad)
             obj.consumoDia = consumoDia;
             obj.horasConRad = horasConRad;
             obj.horasSinRad = horasSinRad;
