@@ -1,4 +1,4 @@
-classdef C_Paneles
+classdef C_G_Paneles
   properties (Access = private)
     IDPanelSolar;
     nombre;
@@ -9,7 +9,7 @@ classdef C_Paneles
     precio;
   end
   methods
-    function obj = C_Paneles(Id, nombre, largo, ancho, potencia, voltaje, precio)
+    function obj = C_G_Paneles(Id, nombre, largo, ancho, potencia, voltaje, precio)
       obj.IDPanelSolar = Id;
       obj.nombre = nombre;
       obj.largo = largo;

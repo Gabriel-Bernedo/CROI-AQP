@@ -19,9 +19,9 @@
 %}
 classdef C_G_Sistema
   properties
-    paneles
-    baterias
-    inversores
+    modelo_Panel
+    modelo_Baterias
+    modelo_inversores
   end
   methods
     function x = C_G_Sistema(Costo_TOTAL,Ahorros_Ani)
@@ -35,6 +35,9 @@ classdef C_G_Sistema
     end
     function obj = config_Inversores(obj, inversores)
       obj.inversores = inversores;
+    end
+    function x = calc_sistema(obj, consumo_Mensual, consumo_Diario, potencia_Pico)
+    
     end
   end
 end

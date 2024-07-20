@@ -9,6 +9,25 @@
   % horasConRad: horas de radiacion solar
   % horasSinRad: horas sin radiacion solar
 
+# METODOS DE INSTANCIA
+
+% solver.config_Baterias(bateria)                                   // Configurar baterias
+    % bateria : instancia de Baterias
+
+% solver.config_Paneles(panel)                                      // Configurar paneles
+    % panel : instancia de Paneles
+
+% solver.config_Inversores(inversor)                                // Configurar inversores  
+    % inversor : instancia de Inversores
+
+% sovler.calc_Sistema(consumoMensual, consumoDiario, potenciaPico)  // Calcular sistema recomendado
+    % consumoMensual: consumo mensual del usuario
+    % consumoDiario: consumo diario del usuario
+    % potenciaPico: potencia pico del sistema
+% Devuelve una instancia de Sistema
+
+% solver.Calc_Total()                                               // Calcular el costo total del sistema
+
 %}
 classdef C_M2_Calculator    
     properties
@@ -16,11 +35,12 @@ classdef C_M2_Calculator
         consumoHora = 0
         cantBat = 0
         cantPan = 0
-        tipoBat = 0
-        tipoPan = 0
-        horasConRad = 0
-        horasSinRad = 0
-        consumoSinRad = 0
+        modelo_Bateria = 0
+        modelo_Panel = 0
+        modelo_Inversor = 0
+        horas_ConRad = 0
+        horas_SinRad = 0
+        consumo_SinRad = 0
         tipoInversor
         costos = [0,0,0] %paneles, baterias, inversor
         costoTotal = 0
@@ -33,6 +53,25 @@ classdef C_M2_Calculator
             obj.horasConRad = horasConRad;
             obj.horasSinRad = horasSinRad;
         end
+        function obj = config_Baterias(obj, bateria)
+            obj.modelo_Bateria = bateria;
+        end
+        function obj = config_Paneles(obj, panel)
+            obj.modelo_Panel = panel;
+        end
+        function obj = config_Inversores(obj, inversor)
+            obj.modelo_Inversor = inversor;
+        end
+
+        function x = calc_Sistema(obj, consumo_Mensual, consumo_Diario, potencia_Pico)
+            x = C_G_Sistema();
+            x.config_Paneles(obj.modelo_Panel);
+            x.config_Baterias(obj.modelo_Bateria);
+            x.config_Inversores(obj.modelo_Inversor);
+
+
+        end
+
         function obj = Calc_Total(obj)
             obj = Calc_Cant_Paneles(obj);
             obj = Calc_Cant_Baterias(obj);
