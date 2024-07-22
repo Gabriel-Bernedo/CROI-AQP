@@ -251,11 +251,13 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Electrodomesticos_usuario` (
   `EleUsuFreNoc` INT NOT NULL,
   `EleUsuPot` DOUBLE NOT NULL,
   `TipCod` INT NOT NULL,
+  `EleUsuEleCod` INT NOT NULL,
   `EleUsuEstReg` VARCHAR(1) NOT NULL,
-  INDEX `Electrodomesticos_idx` (`EleUsuCod` ASC),
   INDEX `Tipo_idx` (`TipCod` ASC),
+  INDEX `Electrodomesticos_idx` (`EleUsuEleCod` ASC),
+  PRIMARY KEY (`EleUsuCod`),
   CONSTRAINT `Electrodomesticos`
-    FOREIGN KEY (`EleUsuCod`)
+    FOREIGN KEY (`EleUsuEleCod`)
     REFERENCES `mydb`.`Electrodomesticos` (`EleCod`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
