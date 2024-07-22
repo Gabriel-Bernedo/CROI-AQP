@@ -5,4 +5,5 @@ function List_Electrodomesticos(app)
     data = fetch(conectarBD(), query);
     data = cellstr(data.EleNom);
     app.D_Electrodomesticos_IngresarE_1.Items = data;
+    
 end
