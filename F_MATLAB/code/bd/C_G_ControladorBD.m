@@ -14,7 +14,7 @@
 %}
 classdef C_G_ControladorBD
   properties
-    conn = null;
+    conn = 0;
   end
   methods
     function obj = C_G_ControladorBD()

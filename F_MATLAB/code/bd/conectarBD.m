@@ -1,7 +1,7 @@
 function conn = conectarBD()
     dbname = 'croi_aqp';
     username = 'root';
-    password = 'admin123';
+    password = 'Gabokiller0711';
     driver = 'com.mysql.cj.jdbc.Driver';
     url = 'jdbc:mysql://localhost:3306';
     conn = database(dbname, username, password);
