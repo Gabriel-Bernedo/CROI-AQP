@@ -1,4 +1,27 @@
-classdef C_Usuario
+%{
+
+% C_G_Usuario:
+
+# CONSTRUCTOR
+
+% usuario = C_G_Usuario(id, nombre, direccion)
+  % id : int
+  % nombre : string
+  % direccion : string
+
+# METODOS DE INSTANCIA
+
+% usuario.Add_Electrodomestico(electrodomestico)
+  % electrodomestico : instancia de C_Electrodomestico
+
+% usuario.Mod_Electrodomestico(electrodomestico)
+  % electrodomestico : instancia de C_Electrodomestico
+
+% usuario.ConsumoTotal(mes)
+  %
+%}
+
+classdef C_G_Usuario
   properties
     id
     nombre
@@ -6,7 +29,7 @@ classdef C_Usuario
     electrodomesticos
   end
   methods
-    function obj = C_Usuario(id, nombre, direccion)
+    function obj = C_G_Usuario(id, nombre, direccion)
       obj.id = id;
       obj.nombre = nombre;
       obj.direccion = direccion;

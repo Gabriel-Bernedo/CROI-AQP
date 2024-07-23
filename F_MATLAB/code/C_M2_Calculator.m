@@ -44,6 +44,14 @@ classdef C_M2_Calculator
         tipoInversor
         costos = [0,0,0] %paneles, baterias, inversor
         costoTotal = 0
+
+        consumoSinRad = 0
+        horasConRad = 0
+        horasSinRad = 0
+
+        tipoPan = 0
+        tipoBat = 0
+
     end
     %
     methods
@@ -68,8 +76,6 @@ classdef C_M2_Calculator
             x.config_Paneles(obj.modelo_Panel);
             x.config_Baterias(obj.modelo_Bateria);
             x.config_Inversores(obj.modelo_Inversor);
-
-
         end
 
         function obj = Calc_Total(obj)

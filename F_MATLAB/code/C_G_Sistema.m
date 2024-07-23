@@ -39,10 +39,24 @@ classdef C_G_Sistema
     function obj = config_Inversores(obj, inversores)
       obj.modelo_inversores = inversores;
     end
-    function obj = calc_sistema(obj, consumo_Mensual, consumoHora, potencia_Pico)
+    function obj = calc_sistema(obj, usuario)
+      if obj.modelo_Paneles == 0 || obj.modelo_Baterias == 0 || obj.modelo_inversores == 0
+        ME = MException('C_G_Sistema:Invalid_Arg', 'No se han configurado los paneles, baterias o inversores');
+        throw(ME);
+      else 
+        
+        consumoHora = 1.1 * consumoDia / 24;
+        consumoSinRad = consumoHora * horas_SinRad;
+        obj.cantidad_Paneles = ceil(consumoSinRad / (obj.modelo_Paneles.potencia * horas_ConRad));
+        obj.cantidad_Baterias = ceil();
+      end 
       obj.cantidad_Inversores = 1;
       obj.cantidad_Baterias = 10;
       obj.cantidad_Paneles = 10;
+
+
+
+      
     end
   end
 end
