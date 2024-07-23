@@ -8,7 +8,6 @@ function Registros_Electrodomesticos(app)
               'FROM electrodomesticos_usuario ', ...
               'JOIN Tipo ON electrodomesticos_usuario.TipCod = tipo.TipCod ', ...
               'JOIN Electrodomesticos ON electrodomesticos_usuario.EleUsuEleCod = electrodomesticos.EleCod'];
-    initialData =  fetch(conectarBD(), query)
-    % Asignar los datos iniciales a la tabla
+    initialData =  fetch(conectarBD(), query);
     app.T_Electrodomesticos_Gestionar_1.Data = initialData;
 end
