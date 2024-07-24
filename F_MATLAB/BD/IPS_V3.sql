@@ -167,32 +167,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Radiacion`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Radiacion` ;
-
-CREATE TABLE IF NOT EXISTS `mydb`.`Radiacion` (
-  `RadCod` INT NOT NULL AUTO_INCREMENT,
-  `RadPotKwMet` DOUBLE NOT NULL,
-  `RadEstReg` VARCHAR(1) NOT NULL,
-  PRIMARY KEY (`RadCod`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`Temperatura`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Temperatura` ;
-
-CREATE TABLE IF NOT EXISTS `mydb`.`Temperatura` (
-  `TemCod` INT NOT NULL AUTO_INCREMENT,
-  `TemVal` DOUBLE NOT NULL,
-  `TemEstReg` VARCHAR(1) NOT NULL,
-  PRIMARY KEY (`TemCod`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `mydb`.`Region`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `mydb`.`Region` ;
@@ -212,25 +186,13 @@ DROP TABLE IF EXISTS `mydb`.`Radiacion_Mes_Temperatura` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Radiacion_Mes_Temperatura` (
   `RadMesTemCod` INT NOT NULL AUTO_INCREMENT,
-  `RadCod` INT NOT NULL,
-  `TemCod` INT NOT NULL,
+  `RadCod` DOUBLE NOT NULL,
+  `TemCod` DOUBLE NOT NULL,
   `RegCod` INT NOT NULL,
   `RadMes` VARCHAR(10) NOT NULL,
   `RadMesTemEstReg` VARCHAR(1) NOT NULL,
   PRIMARY KEY (`RadMesTemCod`),
-  INDEX `TemMes_idx` (`TemCod` ASC),
-  INDEX `RadMes_idx` (`RadCod` ASC),
   INDEX `RegCod_idx` (`RegCod` ASC),
-  CONSTRAINT `RadMes`
-    FOREIGN KEY (`RadCod`)
-    REFERENCES `mydb`.`Radiacion` (`RadCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `TemMes`
-    FOREIGN KEY (`TemCod`)
-    REFERENCES `mydb`.`Temperatura` (`TemCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `RegCod`
     FOREIGN KEY (`RegCod`)
     REFERENCES `mydb`.`Region` (`RegCod`)
