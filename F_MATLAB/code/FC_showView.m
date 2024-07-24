@@ -5,7 +5,7 @@
 function x = FC_showView(app, view)
 
     switch (view)
-        case "1" % Click calculadora de consumo
+    case "1" % Click calculadora de consumo
         app.P_inicio_1.Visible = 'on';
         app.P_IngresarRecibo_1.Visible = 'off';
         app.P_TablaRecibo_Consumo_1.Visible = 'off';
