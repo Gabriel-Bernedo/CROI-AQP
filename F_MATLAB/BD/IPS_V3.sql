@@ -160,10 +160,13 @@ DROP TABLE IF EXISTS `mydb`.`Recibo` ;
 CREATE TABLE IF NOT EXISTS `mydb`.`Recibo` (
   `RecCod` INT NOT NULL AUTO_INCREMENT,
   `RecConMen` DOUBLE NOT NULL,
-  `RecCosTot` DOUBLE NULL DEFAULT NULL,
+  `RecCosTot` DOUBLE NOT NULL,
+  `RecA` INT NOT NULL,
+  `RecM` INT NOT NULL,
   `RecEstReg` VARCHAR(1) NOT NULL,
   PRIMARY KEY (`RecCod`))
-ENGINE = InnoDB;
+ENGINE = InnoDB
+ROW_FORMAT = DEFAULT;
 
 
 -- -----------------------------------------------------
