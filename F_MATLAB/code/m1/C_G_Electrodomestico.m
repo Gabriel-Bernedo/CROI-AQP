@@ -33,7 +33,7 @@ classdef C_G_Electrodomestico < C_G_ElectrodomesticoBase
    end
    methods
       function obj = C_G_Electrodomestico(elec_base, codigo, consumo, frecuencia_dia, frecuencia_noche, frecuencia_semana, tipo)
-         obj = obj@C_G_ElectrodomesticoBase(elec_base.base_codigo, elec_base.nombre, elec_base.consumo_potencia, elec_base.ambiente);
+         obj = obj@C_G_ElectrodomesticoBase(elec_base.base_codigo, elec_base.nombre, elec_base.consumo_potencia_base, elec_base.ambiente);
 
 %  %captura de excepciones de entrada de parametros invalidos
 %          if nombre == ""

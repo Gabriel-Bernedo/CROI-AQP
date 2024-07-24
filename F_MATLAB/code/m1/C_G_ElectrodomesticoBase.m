@@ -12,14 +12,14 @@ classdef C_G_ElectrodomesticoBase
   properties
     base_codigo
     nombre
-    consumo_potencia
+    consumo_potencia_base
     ambiente
   end
   methods
-    function obj = C_G_ElectrodomesticoBase(codigo, nombre, consumo, ambiente)
+    function obj = C_G_ElectrodomesticoBase(codigo, nombre, consumo_base, ambiente)
       obj.base_codigo = codigo;
       obj.nombre = nombre;
-      obj.consumo_potencia = consumo;
+      obj.consumo_potencia_base = consumo_base;
       obj.ambiente = ambiente;
     end
   end

@@ -16,7 +16,7 @@ classdef C_G_Region
 
     methods
         function obj = C_G_Region(codigo,nombre)
-            obj.codigo =  codigo;
+            obj.codigo = codigo;
             obj.nombre = nombre;
         end
     end

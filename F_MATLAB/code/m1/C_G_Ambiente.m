@@ -14,8 +14,10 @@ classdef C_G_Ambiente
 
     methods
         function obj = C_G_Ambiente(codigo,nombre)
-           obj.codigo = codigo;
-           obj.nombre = nombre;
+            if nargin > 0
+               obj.codigo = codigo;
+               obj.nombre = nombre;
+            end
         end
     end
 end

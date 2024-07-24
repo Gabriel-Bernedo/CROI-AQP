@@ -25,6 +25,7 @@ classdef C_G_Radiacion_Mes_Temperatura
             obj.codigo = codigo;
             obj.radiacion = radiacion;
             obj.temperatura = temperatura;
+            obj.region = region;
             obj.mes = mes;
         end
     end
