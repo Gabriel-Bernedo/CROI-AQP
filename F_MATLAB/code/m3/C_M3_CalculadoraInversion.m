@@ -20,9 +20,10 @@ classdef C_M3_CalculadoraInversion
       inversion(0) = inversion.costoTotal();
       costo(0) = 0;
       for i = 1:obj.tiempo
-        costo(i) = obj.usuario.consumoMensual() * 12 * ((12 * i + 114) * 0.0027 + 0.4286) + costo(i - 1);
-        inversion(i) = inversion(i - 1) - costo(i) + obj.costo_mantenimiento / obj.periodo_mantenimiento;
+        costo(i) = obj.usuario.consumoMensual() * 12 * ((12 * i + 126) * 0.0027 + 0.4286) + costo(i - 1);
+        inversion(i) = inversion(i - 1) - costo(i) + obj.costo_mantenimiento / obj.periodo_mantenimiento + inversion.costoReemplazo();
       end
+      x = [inversion, costo];
     end
   end
 end
