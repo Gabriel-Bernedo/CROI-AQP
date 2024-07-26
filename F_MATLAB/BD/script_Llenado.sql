@@ -1,4 +1,4 @@
-
+USE `mydb` ;
 -- Insertar los datos a la tabla Tipo con el estado activo "A"
 INSERT INTO Tipo (TipNom, TipEstReg) VALUES ('Altamente Esencial', 'A');
 INSERT INTO Tipo (TipNom, TipEstReg) VALUES ('Esencial', 'A');
@@ -200,4 +200,75 @@ INSERT INTO `mydb`.`Costo_Kw_historial` (CosKHisMon, CosKHisM, CosKHisA, CosKHis
 (0.7314, 6, 2024, 'A'),
 (0.7314, 7, 2024, 'A');
 
+INSERT INTO PanelSolar (PanMod, PanPot, PanCosMon, PanTieVid, PanCosMan, PanAnc, PanAlt, PanEstReg) VALUES
+('Bateria AGM 12v 65Ah CSBattery', 550, 1200, 25, 0, 1133, 2278, 'A'),
+('Panel solar 100w 12v policristalino Sunlake', 100, 700, 25, 0, 670, 1130, 'A'),
+('Panel Solar 100w 12v Monocristalino Sunlake', 100, 700, 25, 0, 700, 1150, 'A'),
+('Panel solar 150w 12v policristalino Sunlake', 150, 900, 25, 0, 680, 1480, 'A'),
+('Panel solar 150w 12v monocristalino Sunlake', 150, 950, 25, 0, 680, 1480, 'A'),
+('Panel Solar 340w 24v Policristalino Eco Green', 340, 871.50, 25, 0, 992, 1956, 'A'),
+('Panel Solar 450w 24v Monocristalino PERC Eco Green', 450, 1410, 25, 0, 1040, 2102, 'A'),
+('Panel Solar 460Wp 24v Amerisolar Monocristalino Perc Half Cell', 460, 1180, 25, 0, 1040, 2102, 'A'),
+('Panel Solar 550w 24v Monocristalino PERC Eco Green', 550, 1350, 25, 0, 1040, 2102, 'A'),
+('Panel Solar policristalino 100wp Renjiang', 100, 369.64, 25, 0, 670, 1000, 'A'),
+('Panel Solar 100W Amerisolar Policristalino', 100, 456, 25, 0, 670, 1010, 'A'),
+('Panel Solar 150W Amerisolar Policristalino', 150, 600, 25, 0, 670, 1480, 'A'),
+('Panel Solar 340W Amerisolar Policristalino', 340, 1160, 25, 0, 992, 1956, 'A'),
+('Panel Solar 370Wp Amerisolar Monocristalino PERC', 370, 1272, 25, 0, 992, 1956, 'A'),
+('Panel Solar Monocristalino 150W Sunlake', 150, 305, 25, 0, 670, 1480, 'A'),
+('Panel Solar 160W Amerisolar Policristalino', 160, 625.56, 25, 0, 670, 1480, 'A'),
+('Panel Solar 285W Amerisolar Policristalino', 285, 846.72, 25, 0, 992, 1640, 'A'),
+('Panel Solar 370W Peimar Monocristalino PERC Peimar Italian', 370, 1142.89, 25, 0, 992, 1957, 'A'),
+('Panel Solar 150W Peimar Italian Policristalino', 150, 485.73, 25, 0, 674, 1480, 'A'),
+('Panel Solar 285wp Policristalino Peimar Italian', 285, 885.72, 25, 0, 992, 1640, 'A'),
+('Panel Solar Jinko Solar 400Wp HC Monocristalino PERC', 400, 1244.8, 25, 0, 1002, 2008, 'A'),
+('Panel Solar 400W Peimar Monocristalino PERC Peimar Italian', 400, 1196, 25, 0, 1002, 1979, 'A'),
+('Panel Solar 450W Peimar Monocristalino Half Cell PERC Peimar Italian', 450, 1465.72, 25, 0, 1048, 2115, 'A'),
+('Panel Solar 315wp Monocristalino PERC Peimar Italian', 315, 982.84, 25, 0, 992, 1640, 'A'),
+('Panel Solar 340wp Policristalino Peimar Italian', 340, 1040, 25, 0, 992, 1956, 'A'),
+('Panel Solar Jinko Solar 335Wp Policristalino', 335, 1045.73, 25, 0, 992, 1956, 'A'),
+('Panel Solar 270wp Policristalino AE Solar PowerPlus', 270, 732.92, 25, 0, 992, 1650, 'A'),
+('Panel Solar 450W TrinaSolar Monocristalino Half Cell PERC TALLMAX', 450, 1465.72, 25, 0, 1040, 2102, 'A'),
+('TRINA SOLAR PANEL 24V 400W MONOPERC HALF CELL', 400, 1220.02, 25, 0, 1096, 1754, 'A'),
+('PANEL SOLAR 460W 24V AE SOLAR MONOCRISTALINO PERC', 460, 1046, 25, 0, 1133, 1902, 'A');
 
+
+INSERT INTO Inversor (InvMod, InvPot, InvAdmVol, InvCosMon, InvTieVid, InvCosMan, InvEstReg)
+VALUES
+('Inversor Victron Phoenix 24V 375VA VE.Direct', 700, 24, 458.06, 25, 0, 'A'),
+('Inversor Victron Phoenix 24V 500VA VE.Direct', 900, 24, 570.66, 25, 0, 'A'),
+('Inversor Victron Phoenix 24V 250VA VE.Direct', 400, 24, 486.76, 25, 0, 'A'),
+('Inversor Victron Phoenix 24V 800VA VE.Direct', 1500, 24, 1038.78, 25, 0, 'A'),
+('Inversor Victron Phoenix 24V 1200VA VE.Direct', 2200, 24, 1397.18, 25, 0, 'A'),
+('Inversor Victron Phoenix 48V 1200VA 120V VE.Direct 5-15R', 2200, 48, 1363.17, 25, 0, 'A'),
+('Inversor Victron Phoenix 48V 375VA VE.Direct', 700, 48, 521.04, 25, 0, 'A'),
+('Inversor Victron Phoenix 48V 800VA VE.Direct', 1500, 48, 1114.62, 25, 0, 'A'),
+('Inversor Victron Phoenix 48V 1200VA VE.Direct', 2200, 48, 1600.12, 25, 0, 'A'),
+('Inversor Victron Phoenix 48V 250VA VE.Direct', 400, 48, 644.46, 25, 0, 'A'),
+('Inversor Victron Phoenix 12V 375VA 120V VE.Direct 5-15R', 650, 12, 471.54, 25, 0, 'A'),
+('Inversor Victron Phoenix 12V 500VA 120V VE.Direct 5-15R', 1000, 12, 592.99, 25, 0, 'A'),
+('Inversor Victron Phoenix 12V 375VA VE.Direct', 700, 12, 455.33, 25, 0, 'A'),
+('Inversor Victron Phoenix 12V 250VA VE.Direct', 400, 12, 494.74, 25, 0, 'A'),
+('Inversor cargador 300W 12V 10A Must Solar', 300, 12, 506.4, 25, 0, 'A'),
+('Inversor Victron Phoenix 12V 800VA VE.Direct', 1500, 12, 973.85, 25, 0, 'A');
+
+INSERT INTO Bateria (BatMod, BatLag, BatAnc, BatAlt, BatVol, BatCap, BatTip, BatCosMon)
+VALUES
+('Bateria AGM 12v 65Ah CSBattery', 350, 167, 178, 12, 65, 'AGM', 792),
+('Bateria AGM 12v 100Ah CSBattery', 350, 175, 190, 12, 100, 'AGM', 742),
+('Bateria AGM 12v 150Ah CSBattery', 360, 180, 200, 12, 150, 'AGM', 810),
+('Bateria Narada 12v 100Ah AGM', 395, 108, 287, 12, 100, 'AGM', 1217.76),
+('Bateria Narada 12v 150Ah AGM', 550, 125, 283, 12, 150, 'AGM', 1585.92),
+('Bateria AGM 12v 100Ah Kaise', 330, 171, 215, 12, 100, 'AGM', 868.28),
+('BATERIA KAISE AGM 12V 65A', 348, 167, 178, 12, 65, 'AGM', 616.80),
+('Bateria Solar AGM 12v 100Ah Aokly', 331, 173, 213, 12, 100, 'AGM', 857.21),
+('Bateria Kaise AGM 150Ah Libre Mantenimiento', 483, 170, 238.5, 12, 150, 'AGM', 1305.61),
+('BATERIA SOLAR AOKLY 12V 200AH AGM LIBRE MANTENIMIENTO', 522, 240, 218, 12, 200, 'AGM', 1388.05),
+('Bateria Kaise AGM 200Ah Libre Mantenimiento', 546, 125, 310, 12, 200, 'AGM', 1837.40),
+('Bateria Solar AGM 12v 65Ah Aokly', 340, 170, 180, 12, 65, 'AGM', 648.05),
+('BATERIA SOLAR GEL 12V 100AH AOKLY', 329, 172, 214, 12, 100, 'GEL', 1097.20),
+('Bateria GEL 12v 100Ah Kaise', 330, 171, 216, 12, 100, 'GEL', 744.05),
+('BATERIA CSBattery 600A 6V', 300, 200, 250, 6, 600, 'GEL', 0),
+('BATERIA SOLAR 200Ah 12v GEL CSBATTERY', 532, 206, 219, 12, 200, 'GEL', 1047),
+('BATERIA DE GEL CSBattery 100Ah 12V', 307, 169, 211, 12, 100, 'GEL', 525.00),
+('BATERIA MARCA CSBATTERY LITIO 12V 100AH', 522, 240, 224, 12, 100, 'LITIO', 1500);
