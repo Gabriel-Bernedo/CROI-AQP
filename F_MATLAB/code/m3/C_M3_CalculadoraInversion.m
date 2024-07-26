@@ -9,7 +9,7 @@ classdef C_M3_CalculadoraInversion
   end
   methods
     function obj = C_M3_CalculadoraInversion(tiempo, costo_mantenimiento, periodo_mantenimiento)
-      obj.inversion = inversion;
+      % obj.inversion = inversion;
       % obj.tasa_interes = tasa_interes;
       obj.costo_mantenimiento = costo_mantenimiento;
       obj.periodo_mantenimiento = periodo_mantenimiento;
@@ -26,7 +26,6 @@ classdef C_M3_CalculadoraInversion
         ahorro(i) = ahorro(i - 1) - costo(i) + obj.costo_mantenimiento / obj.periodo_mantenimiento; % + inversion.costoReemplazo();
       end
       x = [ahorro, costo];
-
     end
   end
 end
