@@ -8,7 +8,7 @@ consumo diario = 5233
 %}
 %se indica el consumo diario, las horas de radiacion solar y las horas de
 %uso sin radiacion
-calc = C_Calculator(5233, 5, 18); 
+%calc = C_Calculator(5233, 5, 18); 
 % se debe tener 5 baterias de 100Ah para 5233, 5, 18
 %calc = calc.Calc_Cant_Baterias();
 % se debe tener 8 paneles de 150Ah para 5233, 5, 18
@@ -17,7 +17,10 @@ calc = C_Calculator(5233, 5, 18);
 %calc = calc.Calc_Inversor();
 %calcular total ejecuta todos los metodos anteriores y calcula el costo
 %total de la instalacion
-calc = calc.Calc_Total();
-retorno = C_Calc_Retorno(calc.costoTotal, 5233);
+%calc = calc.Calc_Total();
+%retorno = C_Calc_Retorno(calc.costoTotal, 5233);
 
 %ME QUIERO MORIIIIIIIIIIIIIIIIIIIIIIIIIIIR (nio :v)
+conn = conectarBD();
+y = sqlread(conn,"ambiente");
+y = y(:,2);

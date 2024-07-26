@@ -39,7 +39,7 @@ CREATE TABLE `electrodomesticos` (
 
 LOCK TABLES `electrodomesticos` WRITE;
 /*!40000 ALTER TABLE `electrodomesticos` DISABLE KEYS */;
-INSERT INTO `electrodomesticos` VALUES (1,'XD',150,5,2,'Esencial'),(2,'Aire acondicionado',200,2,5,'Esencial'),(3,'XD',200,5,4,'Esencial'),(4,'XD',222,5,2,'Esencial'),(5,'HXD',110,5,2,'Esencial'),(6,'Adornos',220,4,5,'Esencial'),(7,'Altavoces',220,12,5,'Esencial'),(8,'Computadora',200,5,7,'Esencial'),(9,'Aire acondicionado',220,15,5,'Esencial'),(10,'ÑAÑI',202,5,4,'Esencial'),(11,'Adornos',2000,3,1,'Esencial'),(12,'Consola',300,4,1,'Esencial'),(13,'Foco',300,8,7,'Esencial');
+INSERT INTO `electrodomesticos` VALUES ();
 /*!40000 ALTER TABLE `electrodomesticos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
