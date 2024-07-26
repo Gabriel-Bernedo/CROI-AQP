@@ -66,19 +66,22 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `mydb`.`Bateria` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`Bateria` (
-  `BatCod` INT NOT NULL AUTO_INCREMENT,
-  `BatMod` VARCHAR(45) NOT NULL,
-  `BatCap` DOUBLE NOT NULL,
-  `BatCosMon` DOUBLE NOT NULL,
-  `BatTieVid` DOUBLE NOT NULL,
-  `BatCosMan` DOUBLE NOT NULL,
-  `BatAlt` DOUBLE NOT NULL,
-  `BatAnc` DOUBLE NOT NULL,
-  `BatLag` DOUBLE NOT NULL,
-  `BatEstReg` VARCHAR(1) NOT NULL,
-  PRIMARY KEY (`BatCod`))
-ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS Bateria (
+  BatCod INT NOT NULL AUTO_INCREMENT,
+  BatMod VARCHAR(45) NOT NULL,
+  BatCap DOUBLE NOT NULL,
+  BatCosMon DOUBLE NOT NULL,
+  BatTieVid DOUBLE NOT NULL,
+  BatCosMan DOUBLE NOT NULL,
+  BatAlt DOUBLE NOT NULL,
+  BatAnc DOUBLE NOT NULL,
+  BatLag DOUBLE NOT NULL,
+  BatTip VARCHAR(20) NOT NULL,
+  BatVol DOUBLE NOT NULL,
+  BatEstReg VARCHAR(1) NOT NULL,
+  PRIMARY KEY (BatCod)
+) ENGINE = InnoDB;
+
 
 
 -- -----------------------------------------------------
@@ -105,16 +108,18 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `mydb`.`Inversor` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`Inversor` (
+CREATE TABLE IF NOT EXISTS `Inversor` (
   `InvCod` INT NOT NULL AUTO_INCREMENT,
   `InvMod` VARCHAR(45) NOT NULL,
   `InvPot` DOUBLE NOT NULL,
   `InvCosMon` DOUBLE NOT NULL,
   `InvTieVid` DOUBLE NOT NULL,
   `InvCosMan` DOUBLE NOT NULL,
+  `InvAdmVol` DOUBLE NOT NULL,
   `InvEstReg` VARCHAR(1) NOT NULL,
-  PRIMARY KEY (`InvCod`))
-ENGINE = InnoDB;
+  PRIMARY KEY (`InvCod`)
+) ENGINE = InnoDB;
+
 
 
 -- -----------------------------------------------------
