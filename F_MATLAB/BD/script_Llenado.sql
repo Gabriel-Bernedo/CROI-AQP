@@ -9,7 +9,7 @@ INSERT INTO Tipo (TipNom, TipEstReg) VALUES ('No Esencial', 'A');
 INSERT INTO Ambiente (AmbNom, AmbEstReg) VALUES ('Cocina', 'A');
 INSERT INTO Ambiente (AmbNom, AmbEstReg) VALUES ('Sala', 'A');
 INSERT INTO Ambiente (AmbNom, AmbEstReg) VALUES ('Dormitorio', 'A');
-INSERT INTO Ambiente (AmbNom, AmbEstReg) VALUES ('Baño', 'A');
+INSERT INTO Ambiente (AmbNom, AmbEstReg) VALUES ('BaÃ±o', 'A');
 INSERT INTO Ambiente (AmbNom, AmbEstReg) VALUES ('Lavanderia', 'A');
 
 -- Insertar los datos Cocina con el estado activo "A"
@@ -38,12 +38,12 @@ INSERT INTO Electrodomesticos (EleNom, ElePotCon, ambCod, EleEstReg) VALUES ('Ve
 INSERT INTO Electrodomesticos (EleNom, ElePotCon, ambCod, EleEstReg) VALUES ('Play Station', 100, 3, 'A');
 INSERT INTO Electrodomesticos (EleNom, ElePotCon, ambCod, EleEstReg) VALUES ('Cargador de celular', 20, 3, 'A');
 
--- Insertar los datos Baño con el estado activo "A"
-INSERT INTO Electrodomesticos (EleNom, ElePotCon, ambCod, EleEstReg) VALUES ('Ducha eléctrica', 3700, 4, 'A');
-INSERT INTO Electrodomesticos (EleNom, ElePotCon, ambCod, EleEstReg) VALUES ('Terma eléctrica', 1200, 4, 'A');
+-- Insertar los datos BaÃ±o con el estado activo "A"
+INSERT INTO Electrodomesticos (EleNom, ElePotCon, ambCod, EleEstReg) VALUES ('Ducha elÃ©ctrica', 3700, 4, 'A');
+INSERT INTO Electrodomesticos (EleNom, ElePotCon, ambCod, EleEstReg) VALUES ('Terma elÃ©ctrica', 1200, 4, 'A');
 INSERT INTO Electrodomesticos (EleNom, ElePotCon, ambCod, EleEstReg) VALUES ('Secadora de cabello', 1000, 4, 'A');
 
--- Insertar los datos Lavandería con el estado activo "A"
+-- Insertar los datos LavanderÃ­a con el estado activo "A"
 INSERT INTO Electrodomesticos (EleNom, ElePotCon, ambCod, EleEstReg) VALUES ('Secadora de ropa', 4200, 5, 'A');
 INSERT INTO Electrodomesticos (EleNom, ElePotCon, ambCod, EleEstReg) VALUES ('Plancha', 1000, 5, 'A');
 INSERT INTO Electrodomesticos (EleNom, ElePotCon, ambCod, EleEstReg) VALUES ('Aspiradora', 900, 5, 'A');
