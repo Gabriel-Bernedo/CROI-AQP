@@ -30,7 +30,7 @@ classdef C_G_BDController
     function obj = C_G_BDController(dbname, username, password)
       % dbname = 'croi_aqp';
       % username = 'root';
-      % password = 'admin123';
+      % password = 'Gabokiller0711';
       % driver = 'com.mysql.cj.jdbc.Driver';
       % url = 'jdbc:mysql://localhost:3306';
       conn = database(dbname, username, password);
@@ -115,7 +115,7 @@ classdef C_G_BDController
       %   Detailed explanation goes here
     end
 
-    %metodo delete y update funcionan
+    %metodo delete y upda
     function delete_Electrodomestico(obj, id)
       sqlquery = sprintf("DELETE FROM electrodomesticos WHERE id = %d", id);
       exec(obj.connection, sqlquery);

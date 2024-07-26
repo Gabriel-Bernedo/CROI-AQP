@@ -15,7 +15,7 @@
 
 %}
 classdef C_G_Inversor
-  properties (Access = private)
+  properties
     ID;
     nombre;
     potencia;
@@ -23,7 +23,8 @@ classdef C_G_Inversor
     precio;
   end
   methods
-    function obj = C_G_Inversor(nombre, potencia, admision, precio)
+    function obj = C_G_Inversor(Id, nombre, potencia, admision, precio)
+      obj.ID = Id;
       obj.nombre = nombre;
       obj.potencia = potencia;
       obj.admision = admision;
