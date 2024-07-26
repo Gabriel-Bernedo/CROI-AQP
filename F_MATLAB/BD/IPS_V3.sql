@@ -220,6 +220,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Electrodomesticos_usuario` (
   `EleUsuFreSem` INT NOT NULL,
   `EleUsuFreNoc` INT NOT NULL,
   `EleUsuPot` DOUBLE NOT NULL,
+  `EleUsuCan` INT NOT NULL,
   `TipCod` INT NOT NULL,
   `EleUsuEleCod` INT NOT NULL,
   `EleUsuEstReg` VARCHAR(1) NOT NULL,
