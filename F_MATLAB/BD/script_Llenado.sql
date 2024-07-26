@@ -1,4 +1,4 @@
-
+USE `mydb` ;
 -- Insertar los datos a la tabla Tipo con el estado activo "A"
 INSERT INTO Tipo (TipNom, TipEstReg) VALUES ('Altamente Esencial', 'A');
 INSERT INTO Tipo (TipNom, TipEstReg) VALUES ('Esencial', 'A');
