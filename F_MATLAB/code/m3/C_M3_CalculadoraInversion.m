@@ -23,7 +23,7 @@ classdef C_M3_CalculadoraInversion
       inv(1) = 3400; % inversion.costoTotal();
       ahorro(1) = 0;
       for i = 2:obj.tiempo
-        ahorro(i) = 5.233 * 30 * 12 * ((12 * i + 114) * 0.0027 + 0.4286) + costo(i - 1) - obj.costo_mantenimiento * obj.periodo_mantenimiento;
+        ahorro(i) = 5.233 * 30 * 12 * ((12 * i + 114) * 0.0027 + 0.4286) + ahorro(i - 1) - obj.costo_mantenimiento * obj.periodo_mantenimiento;
         inv(i) = inv(1);  % + inversion.costoReemplazo();
       end
       x = [inv, ahorro];
