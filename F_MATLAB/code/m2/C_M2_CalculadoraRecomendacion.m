@@ -11,10 +11,11 @@ classdef C_M2_CalculadoraRecomendacion
   end
   methods
 
-    function obj = C_M2_CalculadoraRecomendacion()
+    function obj = C_M2_CalculadoraRecomendacion(usuario)
       % obj.recomendacion = recomendacion;
       % obj.tasa_interes = tasa_interes;
       obj.horas_dia = 12;
+      obj.usuario = usuario;
     end
 
     function obj = config_panel(obj, panel)
