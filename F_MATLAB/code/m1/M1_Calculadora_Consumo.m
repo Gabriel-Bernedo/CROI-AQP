@@ -85,11 +85,16 @@ classdef M1_Calculadora_Consumo
             data = obj.electrodomesticos;
         end
 
-        function tabla = Table_Electrodomesticos(obj)
-            datos = obj.Get_Electrodomesticos();
-
-            tabla = 0;
+        function table = Table_Electrodomesticos(obj)
+            table = {};
+            for i = 1 : numel(obj.electrodomesticos)
+                electrodomesticoStr = obj.electrodomesticos(i).to_String();
+                table(end+1, :) = electrodomesticoStr(:);
+            end
         end
+
+
+        
         function item = Item_Ambiente(obj)
             item = {};
             for i = 1: width(obj.ambientes)
@@ -153,7 +158,6 @@ classdef M1_Calculadora_Consumo
                 end
             end
         end
-
         % Función para obtener los Recibos
         function data = Get_Recibos(obj)
             data = obj.recibos;

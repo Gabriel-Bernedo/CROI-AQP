@@ -1,4 +1,9 @@
 function T_Recibo_1SelectionChanged_Function(app)
+    app.Fi_ReciboCostoTotal_1.Editable ="off";
+    app.Fi_ReciboConsumo_1.Editable = "off";
+    app.B_EditarRecibo_1.Visible = "on";
+    app.B_EliminarRecibo_1.Visible = "off";
+    app.B_ActualizarRecibo_1.Visible = "off";
     selection = app.T_Recibo_1.Selection;
     x = selection(:,1);
     rowData = app.T_Recibo_1.Data(x, :);
