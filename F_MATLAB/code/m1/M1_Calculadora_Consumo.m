@@ -10,6 +10,7 @@ classdef M1_Calculadora_Consumo
         tipo
         historial_e
         historial_r
+        usuario
     end
 
     methods
@@ -23,6 +24,7 @@ classdef M1_Calculadora_Consumo
             obj.ele_base = consulta.electrodomesticos();
             obj.rec_base = consulta.recibo();
             obj.tipo = consulta.tipo();
+            %obj.usuario = usuario;
             if isempty(obj.electrodomesticos)
                 obj.historial_e = 0;
             else
@@ -35,12 +37,12 @@ classdef M1_Calculadora_Consumo
         %FRONTEND :: % % ("name_E",potencia, dia, noche, semana, cantidad, tipo)
         function obj = I_Electrodomesticos(obj, data)
             for i = 1 : width(obj.ele_base)
-                if(data{1} == obj.ele_base(i).nombre)
+                if strcmp(data{1}, obj.ele_base(i).nombre)
                 elec = obj.ele_base(i);
                 end
             end
             for j = 1 : width(obj.tipo)
-                if(data{7} == obj.tipo(j).nombre)
+                if strcmp(data{7}, obj.tipo(j).nombre)
                 tip = obj.tipo(j);
                 end
             end
@@ -53,7 +55,6 @@ classdef M1_Calculadora_Consumo
         %FRONTEND :: % (codigo)
         function obj = D_Electrodomesticos(obj, id)
             for i = 1 : width(obj.electrodomesticos)
-                obj.electrodomesticos(i).codigo
                 if(obj.electrodomesticos(i).codigo == id)
                     obj.electrodomesticos(i) = [];
                     break;
@@ -80,20 +81,53 @@ classdef M1_Calculadora_Consumo
             end
         end
 
-        %Falta Completar
         function data = Get_Electrodomesticos(obj)
             data = obj.electrodomesticos;
         end
 
-        % Función para insertar Recibos
-        function obj = I_Recibos(obj, data)
-            for i = 1 : width(obj.rec_base)
-                if(data{1} == obj.rec_base(i).nombre)
-                    rec = obj.rec_base(i);
+        function table = Table_Electrodomesticos(obj)
+            table = {};
+            for i = 1 : numel(obj.electrodomesticos)
+                electrodomesticoStr = obj.electrodomesticos(i).to_String();
+                table(end+1, :) = electrodomesticoStr(:);
+            end
+        end
+
+
+        
+        function item = Item_Ambiente(obj)
+            item = {};
+            for i = 1: width(obj.ambientes)
+                item{end+1} = obj.ambientes(i).nombre;
+            end
+        end
+        function item = Item_Tipo(obj)
+            item = {};
+            for i = 1: width(obj.tipo)
+                item{end+1} = obj.tipo(i).nombre;
+            end
+        end
+        function item = Item_Electrodomestico(obj, ambiente)
+            item = {};
+            for i = 1: width(obj.ele_base)
+                if strcmp(obj.ele_base(i).ambiente.nombre, ambiente)
+                    item{end+1} = obj.ele_base(i).nombre;
                 end
             end
+        end
+        function electro = Obj_Electrodomesticos(obj, id)
+            for i = 1: width(obj.ele_base)
+                if strcmp(obj.ele_base(i).nombre, id)
+                    electro = obj.ele_base(i);
+                end
+            end
+        end
+
+        % FRONTEND :: (consumo, costo,RecA,RecM)
+        % Función para insertar Recibos
+        function obj = I_Recibos(obj, data)
             codigo = obj.historial_r + 1;
-            nuevo = C_G_Recibo(rec, codigo, data{2}, data{3}, data{4}, data{5});
+            nuevo = C_G_Recibo(codigo, data{1}, data{2}, data{3}, data{4});
             obj.recibos(end+1) = nuevo;
             obj.historial_r = codigo;
         end
@@ -119,7 +153,6 @@ classdef M1_Calculadora_Consumo
                 end
             end
         end
-
         % Función para obtener los Recibos
         function data = Get_Recibos(obj)
             data = obj.recibos;
