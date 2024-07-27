@@ -23,6 +23,7 @@ classdef C_G_Usuario
     id
     nombre
     electrodomesticos
+    recomendacion
   end
   methods
     function obj = C_G_Usuario(id, nombre)
@@ -58,6 +59,27 @@ classdef C_G_Usuario
           break;
         end
       end
+    end
+
+    function x = ConsumoMensual(obj)
+      x = 0;
+      for i = 1:length(obj.electrodomesticos)
+        x = x + obj.electrodomesticos(i).consumoMensual();
+      end
+    end
+
+    function x = PotenciaPico(obj, tipo)
+      dia = 0;
+      noche = 0;
+      for i = 1:length(obj.electrodomesticos)
+        if obj.electrodomesticos(i).horas_dia > 0
+          dia = dia + obj.electrodomesticos(i).potencia;
+        end
+        if obj.electrodomesticos(i).horas_noche > 0
+          noche = noche + obj.electrodomesticos(i).potencia;
+        end
+      end
+      x = max(dia, noche);
     end
 
     function obj = Restore_Electrodomestico(obj, bd)

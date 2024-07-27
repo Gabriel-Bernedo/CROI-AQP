@@ -103,6 +103,10 @@ classdef C_G_Electrodomestico < C_G_ElectrodomesticoBase
          x = obj.ConsumoDiaPromedio() + obj.ConsumoNochePromedio();
       end
 
+      function x = ConsumoMensual(obj)
+         x = obj.ConsumoDiarioPromedio() * 30;
+      end
+
 
 
 
