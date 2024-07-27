@@ -1,4 +1,3 @@
-
 function conn = conectarBD()
     %nombre de tu conexion
     dbname = 'mydb';
