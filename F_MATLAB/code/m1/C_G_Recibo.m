@@ -12,13 +12,17 @@ classdef C_G_Recibo
         codigo
         consumo
         costo
+        RecA
+        RecM
     end
 
     methods
-        function obj = C_G_Recibo(codigo, consumo, costo)
+        function obj = C_G_Recibo(codigo, consumo, costo,RecA,RecM)
             obj.codigo = codigo;
             obj.consumo = consumo;
             obj.costo = costo;
+            obj.RecA = RecA;
+            obj.RecM = RecM;   
         end
     end
 end
