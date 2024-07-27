@@ -29,7 +29,7 @@ classdef C_M3_CalculadoraInversion
       x = [inv, ahorro];
       obj.resultado = x;
     end
-    function x = get_ROI(obj);
+    function x = get_ROI(obj)
       x = 0;
       obj.resultado;
       for i = 1:obj.tiempo
