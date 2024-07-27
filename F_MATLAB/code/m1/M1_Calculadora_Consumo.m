@@ -123,16 +123,11 @@ classdef M1_Calculadora_Consumo
             end
         end
 
-
+        % FRONTEND :: (consumo, costo,RecA,RecM)
         % Función para insertar Recibos
         function obj = I_Recibos(obj, data)
-            for i = 1 : width(obj.rec_base)
-                if(data{1} == obj.rec_base(i).nombre)
-                    rec = obj.rec_base(i);
-                end
-            end
             codigo = obj.historial_r + 1;
-            nuevo = C_G_Recibo(rec, codigo, data{2}, data{3}, data{4}, data{5});
+            nuevo = C_G_Recibo(codigo, data{1}, data{2}, data{3}, data{4});
             obj.recibos(end+1) = nuevo;
             obj.historial_r = codigo;
         end

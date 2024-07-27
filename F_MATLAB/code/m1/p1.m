@@ -30,6 +30,8 @@ sel = ambiente(ambiente.PanCod == 1,:);
 nombre = sel.PanMod;
 %%
 x = M1_Calculadora_Consumo();
+%(consumo, costo,RecA,RecM)
+y = {2, 2, 5, 1};
 x.I_Recibos(obj, data)
 %%
 x = M1_Calculadora_Consumo();
