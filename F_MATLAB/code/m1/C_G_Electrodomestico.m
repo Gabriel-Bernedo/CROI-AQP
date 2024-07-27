@@ -104,7 +104,11 @@ classdef C_G_Electrodomestico < C_G_ElectrodomesticoBase
       function x = ConsumoDiarioPromedio(obj)
          x = obj.ConsumoDiaPromedio() + obj.ConsumoNochePromedio();
       end
-      
+
+      function x = ConsumoMensual(obj)
+         x = obj.ConsumoDiarioPromedio() * 30;
+      end
+
       function result = isEmpty(obj)
         result = isempty(obj.codigo) || obj.codigo == 0;
       end
