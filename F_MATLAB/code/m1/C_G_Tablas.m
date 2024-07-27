@@ -20,7 +20,7 @@ classdef C_G_Tablas
             tabla = obj.BD.Registro_Tabla('bateria');
             RegistroBateria = C_G_Bateria.empty(height(tabla), 0);
             for i = 1:height(tabla)
-                RegistroBateria(i) = C_G_Bateria(tabla.BatCod(i), tabla.BatMod{i}, tabla.BatCap(i), tabla.BatCosMon(i), tabla.BatTieVid(i), tabla.BatCosMan(i), tabla.BatAlt(i), tabla.BatAnc(i), tabla.BatLag(i));
+                RegistroBateria(i) = C_G_Bateria(tabla.BatCod(i), tabla.BatMod{i}, tabla.BatCap(i), tabla.BatCosMon(i), tabla.BatTieVid(i), tabla.BatCosMan(i), tabla.BatAlt(i), tabla.BatAnc(i), tabla.BatLag(i), tabla.BatTip(i), tabla.BatVol(i));
             end
         end
         
@@ -36,7 +36,7 @@ classdef C_G_Tablas
             tabla = obj.BD.Registro_Tabla('inversor');
             RegistroInversor = C_G_Inversor.empty(height(tabla), 0);
             for i = 1:height(tabla)
-                RegistroInversor(i) = C_G_Inversor(tabla.InvCod(i), tabla.InvMod{i}, tabla.InvPot(i), tabla.InvCosMon(i), tabla.InvTieVid(i), tabla.InvCosMan(i));
+                RegistroInversor(i) = C_G_Inversor(tabla.InvCod(i), tabla.InvMod{i}, tabla.InvPot(i), tabla.InvCosMon(i), tabla.InvTieVid(i), tabla.InvCosMan(i), tabla.InvAdmVol(i));
             end
         end
         
@@ -44,7 +44,7 @@ classdef C_G_Tablas
             tabla = obj.BD.Registro_Tabla('recibo');
             RegistroRecibo = C_G_Recibo.empty(height(tabla), 0);
             for i = 1:height(tabla)
-                RegistroRecibo(i) = C_G_Recibo(tabla.RecCod(i), tabla.RecConMen(i), tabla.RecCosTot(i));
+                RegistroRecibo(i) = C_G_Recibo(tabla.RecCod(i), tabla.RecConMen(i), tabla.RecCosTot(i), tabla.RecA(i), tabla.RecM(i));
             end
         end
         
@@ -90,7 +90,7 @@ classdef C_G_Tablas
             RegistroRadiacionMesTemperatura = C_G_Radiacion_Mes_Temperatura.empty(height(tabla), 0);
             for i = 1:height(tabla)
                 region = RegistroRegion([RegistroRegion.codigo] == tabla.RegCod(i));
-                RegistroRadiacionMesTemperatura(i) = C_G_Radiacion_Mes_Temperatura(tabla.RadMesTemCod(i), tabla.RadCod(i), tabla.TemCod(i), region, tabla.RadMes{i});
+                RegistroRadiacionMesTemperatura(i) = C_G_Radiacion_Mes_Temperatura(tabla.RadMesTemCod(i), tabla.RadCod(i), tabla.TemCod(i), tabla.RegCod(i), tabla.RadMes{i});
             end
         end
         
@@ -102,7 +102,7 @@ classdef C_G_Tablas
             for i = 1:height(tabla)
                 elec_base = RegistroElectrodomesticos([RegistroElectrodomesticos.base_codigo] == tabla.EleUsuEleCod(i));
                 tipo = RegistroTipo([RegistroTipo.codigo] == tabla.TipCod(i));
-                RegistroElectrodomesticosUsuario(i) = C_G_Electrodomestico(elec_base, tabla.EleUsuCod(i), tabla.EleUsuPot(i), tabla.EleUsuFreDia(i), tabla.EleUsuFreNoc, tabla.EleUsuFreSem, tipo);
+                RegistroElectrodomesticosUsuario(i) = C_G_Electrodomestico(elec_base, tabla.EleUsuCod(i), tabla.EleUsuFreSem(i), tabla.EleUsuFreDia(i), tabla.EleUsuFreNoc(i), tabla.EleUsuPot(i), tabla.EleUsuCan(i), tabla.TipCod(i), tabla.EleUsuEleCod(i));
             end
         end
         
