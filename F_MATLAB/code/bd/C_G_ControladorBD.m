@@ -44,5 +44,17 @@ classdef C_G_ControladorBD
     function Insertar_Registro(obj, tabla, data)
         sqlwrite(obj.conn, tabla, data);
     end
+    function Update_Registro(obj, tabla, setClause, condition)
+        query = sprintf('UPDATE `%s` SET %s WHERE %s', tabla, setClause, condition);
+        disp(['SQL: ', query]);
+        execute(obj.conn, query);
+    end
+    function Delete_Registro(obj, tabla, id)
+        query = sprintf('DELETE FROM %s WHERE %s', tabla, id);
+        disp(['SQL: ', query]);
+        execute(obj.conn, query);
+    end
+
+
   end
 end
