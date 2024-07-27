@@ -6,6 +6,7 @@ classdef C_M3_CalculadoraInversion
     usuario
     costo_mantenimiento
     periodo_mantenimiento
+    resultado
   end
   methods
     function obj = C_M3_CalculadoraInversion(tiempo, costo_mantenimiento, periodo_mantenimiento)
@@ -26,6 +27,28 @@ classdef C_M3_CalculadoraInversion
         inv(i) = inv(1);  % + inversion.costoReemplazo();
       end
       x = [inv, ahorro];
+      obj.resultado = x;
+    end
+    function x = get_ROI(obj);
+      x = 0;
+      obj.resultado;
+      for i = 1:obj.tiempo
+        x = x + obj.resultado(i,2);
+      end
+      x = x / obj.tiempo;
+    end
+    function x = get_PRI(obj)
+      x = obj.get_ROI();
+      x = x / obj.resultado(1,1);
+    end
+    function x = get_TIR(obj)
+      x = -1;
+      for i = 1:obj.tiempo
+        if obj.resultado(i,1) <= obj.resultado(i,2)
+          x = i;
+          break;
+        end
+      end
     end
   end
 end
