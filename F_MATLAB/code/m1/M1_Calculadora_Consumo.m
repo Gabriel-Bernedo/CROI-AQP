@@ -3,6 +3,7 @@ classdef M1_Calculadora_Consumo
         recibos
         electrodomesticos
         ele_base
+        rec_base
         costo_Kw
         radiacion
         ambientes
@@ -21,6 +22,7 @@ classdef M1_Calculadora_Consumo
             obj.radiacion = consulta.radiacion_mes_temperatura();
             obj.ambientes = consulta.ambiente();
             obj.ele_base = consulta.electrodomesticos();
+            obj.rec_base = consulta.recibo();
             obj.tipo = consulta.tipo();
             %obj.usuario = usuario;
             if isempty(obj.electrodomesticos)
@@ -107,6 +109,45 @@ classdef M1_Calculadora_Consumo
                     item{end+1} = obj.ele_base(i).nombre;
                 end
             end
+        end
+        % Función para insertar Recibos
+        function obj = I_Recibos(obj, data)
+            for i = 1 : width(obj.rec_base)
+                if(data{1} == obj.rec_base(i).nombre)
+                    rec = obj.rec_base(i);
+                end
+            end
+            codigo = obj.historial_r + 1;
+            nuevo = C_G_Recibo(rec, codigo, data{2}, data{3}, data{4}, data{5});
+            obj.recibos(end+1) = nuevo;
+            obj.historial_r = codigo;
+        end
+
+        % Función para eliminar Recibos
+        function obj = D_Recibos(obj, id)
+            for i = 1 : length(obj.recibos)
+                if(obj.recibos(i).codigo == id)
+                    obj.recibos(i) = [];
+                    break;
+                end
+            end
+        end
+
+        % Función para editar Recibos
+        function obj = E_Recibos(obj, data)
+            for i = 1 : length(obj.recibos)
+                if(data{1} == obj.recibos(i).codigo)
+                    obj.recibos(i).consumo = data{2};
+                    obj.recibos(i).costo = data{3};
+                    obj.recibos(i).RecA = data{4};
+                    obj.recibos(i).RecM = data{5};
+                end
+            end
+        end
+
+        % Función para obtener los Recibos
+        function data = Get_Recibos(obj)
+            data = obj.recibos;
         end
     end
 end
