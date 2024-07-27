@@ -37,12 +37,12 @@ classdef M1_Calculadora_Consumo
         %FRONTEND :: % % ("name_E",potencia, dia, noche, semana, cantidad, tipo)
         function obj = I_Electrodomesticos(obj, data)
             for i = 1 : width(obj.ele_base)
-                if(data{1} == obj.ele_base(i).nombre)
+                if strcmp(data{1}, obj.ele_base(i).nombre)
                 elec = obj.ele_base(i);
                 end
             end
             for j = 1 : width(obj.tipo)
-                if(data{7} == obj.tipo(j).nombre)
+                if strcmp(data{7}, obj.tipo(j).nombre)
                 tip = obj.tipo(j);
                 end
             end
@@ -110,6 +110,15 @@ classdef M1_Calculadora_Consumo
                 end
             end
         end
+        function electro = Obj_Electrodomesticos(obj, id)
+            for i = 1: width(obj.ele_base)
+                if strcmp(obj.ele_base(i).nombre, id)
+                    electro = obj.ele_base(i);
+                end
+            end
+        end
+
+
         % Función para insertar Recibos
         function obj = I_Recibos(obj, data)
             for i = 1 : width(obj.rec_base)
