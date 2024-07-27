@@ -29,10 +29,11 @@ classdef C_G_Electrodomestico < C_G_ElectrodomesticoBase
       frecuencia_dia
       frecuencia_noche
       frecuencia_semana
+      cantidad
       tipo
    end
    methods
-      function obj = C_G_Electrodomestico(elec_base, codigo, consumo, frecuencia_dia, frecuencia_noche, frecuencia_semana, tipo)
+       function obj = C_G_Electrodomestico(elec_base, codigo, consumo, frecuencia_dia, frecuencia_noche, frecuencia_semana, cantidad, tipo)
          obj = obj@C_G_ElectrodomesticoBase(elec_base.base_codigo, elec_base.nombre, elec_base.consumo_potencia_base, elec_base.ambiente);
 
 %  %captura de excepciones de entrada de parametros invalidos
@@ -65,12 +66,13 @@ classdef C_G_Electrodomestico < C_G_ElectrodomesticoBase
          obj.frecuencia_dia = frecuencia_dia;
          obj.frecuencia_noche = frecuencia_noche;
          obj.frecuencia_semana = frecuencia_semana;
+         obj.cantidad = cantidad;
          obj.tipo = tipo;
          
       end
 
       function x = ConsumoDia(obj)
-         x = obj.consumo_potencia * obj.frecuencia_dia
+         x = obj.consumo_potencia * obj.frecuencia_dia;
       end
 
       function x = ConsumoNoche(obj)
@@ -103,6 +105,13 @@ classdef C_G_Electrodomestico < C_G_ElectrodomesticoBase
          x = obj.ConsumoDiaPromedio() + obj.ConsumoNochePromedio();
       end
 
+      function x = ConsumoMensual(obj)
+         x = obj.ConsumoDiarioPromedio() * 30;
+      end
+
+      function result = isEmpty(obj)
+        result = isempty(obj.codigo) || obj.codigo == 0;
+      end
 
 
 

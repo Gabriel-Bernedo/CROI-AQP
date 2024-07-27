@@ -6,7 +6,7 @@ classdef C_G_Tablas
     
     methods
         function obj = C_G_Tablas()
-            obj.BD = conectarBD(); % Asegúrate de que conectarBD retorne una conexión válida a la base de datos
+            obj.BD = C_G_ControladorBD(); % Asegúrate de que conectarBD retorne una conexión válida a la base de datos
         end
         function RegistroAmbiente = ambiente(obj)
             tabla = obj.BD.Registro_Tabla('ambiente');
@@ -90,7 +90,7 @@ classdef C_G_Tablas
             RegistroRadiacionMesTemperatura = C_G_Radiacion_Mes_Temperatura.empty(height(tabla), 0);
             for i = 1:height(tabla)
                 region = RegistroRegion([RegistroRegion.codigo] == tabla.RegCod(i));
-                RegistroRadiacionMesTemperatura(i) = C_G_Radiacion_Mes_Temperatura(tabla.RadMesTemCod(i), tabla.RadCod(i), tabla.TemCod(i), tabla.RegCod(i), tabla.RadMes{i});
+                RegistroRadiacionMesTemperatura(i) = C_G_Radiacion_Mes_Temperatura(tabla.RadMesTemCod(i), tabla.RadCod(i), tabla.TemCod(i), region, tabla.RadMes{i});
             end
         end
         
@@ -102,7 +102,18 @@ classdef C_G_Tablas
             for i = 1:height(tabla)
                 elec_base = RegistroElectrodomesticos([RegistroElectrodomesticos.base_codigo] == tabla.EleUsuEleCod(i));
                 tipo = RegistroTipo([RegistroTipo.codigo] == tabla.TipCod(i));
-                RegistroElectrodomesticosUsuario(i) = C_G_Electrodomestico(elec_base, tabla.EleUsuCod(i), tabla.EleUsuFreSem(i), tabla.EleUsuFreDia(i), tabla.EleUsuFreNoc(i), tabla.EleUsuPot(i), tabla.EleUsuCan(i), tabla.TipCod(i), tabla.EleUsuEleCod(i));
+                RegistroElectrodomesticosUsuario(i) = C_G_Electrodomestico(elec_base, tabla.EleUsuCod(i), tabla.EleUsuFreSem(i), tabla.EleUsuFreDia(i), tabla.EleUsuFreNoc(i), tabla.EleUsuPot(i), tabla.EleUsuCan(i), tipo);
+            end
+        end
+
+        function RegistroRecibosUsuario = recibos_usuario(obj)
+            tabla = obj.BD.Registro_Tabla('Recibo');
+            RegistroRecibos = obj.recibo(); % Cargar los datos necesarios
+            RegistroRecibosUsuario = C_G_Recibo.empty(height(tabla), 0);
+            for i = 1:height(tabla)
+                elec_base = RegistroElectrodomesticos([RegistroElectrodomesticos.base_codigo] == tabla.EleUsuEleCod(i));
+                tipo = RegistroTipo([RegistroTipo.codigo] == tabla.TipCod(i));
+                RegistroElectrodomesticosUsuario(i) = C_G_Electrodomestico(elec_base, tabla.EleUsuCod(i), tabla.EleUsuFreSem(i), tabla.EleUsuFreDia(i), tabla.EleUsuFreNoc(i), tabla.EleUsuPot(i), tabla.EleUsuCan(i), tipo);
             end
         end
         
@@ -119,6 +130,96 @@ classdef C_G_Tablas
                 RegistroRecomendacionPV(i) = C_G_Recomendacion_PV(tabla.RecPVCod(i), panel, bateria, inversor, tabla.PanCan(i), tabla.BatCan(i));
             end
         end
+
+        %Generador de CLASE :: SQL
+
+        function SQLelectrodomesticos_usuario(obj, data)
+                registrosActuales = obj.electrodomesticos_usuario();
+                existingIDs = [registrosActuales.codigo];
+                Del = setdiff(existingIDs,[data.codigo]);
+                for i = 1:length(data)
+                    if ~isempty(find(existingIDs == data(i).codigo))
+                        % Construir la cláusula SET de la consulta SQL
+                        sqlquery = sprintf(['`EleUsuFreDia` = %f, ' ...
+                                            '`EleUsuFreSem` = %f, ' ...
+                                            '`EleUsuFreNoc` = %f, ' ...
+                                            '`EleUsuPot` = %f, ' ...
+                                            '`EleUsuCan` = %d, ' ...
+                                            '`TipCod` = %f, ' ...
+                                            '`EleUsuEstReg` = ''A'', ' ...
+                                            '`EleUsuEleCod` = %f '], ...
+                                            data(i).frecuencia_dia, ...
+                                            data(i).frecuencia_semana, ...
+                                            data(i).frecuencia_noche, ...
+                                            data(i).consumo_potencia, ...
+                                            data(i).cantidad, ...
+                                            data(i).tipo.codigo, ...
+                                            data(i).base_codigo);
+                    
+                        % Construir la condición WHERE de la consulta SQL
+                        id = sprintf('`EleUsuCod` = %d', data(i).codigo);
+                        
+                        % Llamar a la función Update_Registro
+                        obj.BD.Update_Registro("electrodomesticos_usuario", sqlquery, id);
+                    else
+                        dato = table(data(i).frecuencia_dia, data(i).frecuencia_semana, ...
+                            data(i).frecuencia_noche, data(i).consumo_potencia,data(i).cantidad ...
+                            , data(i).tipo.codigo, data(i).base_codigo, "A", 'VariableNames', ...
+                            {'EleUsuFreDia', 'EleUsuFreSem', 'EleUsuFreNoc', 'EleUsuPot', ...
+                            'EleUsuCan' , 'TipCod', 'EleUsuEleCod', 'EleUsuEstReg'});
+                         obj.BD.Insertar_Registro("electrodomesticos_usuario", dato);
+                    end
+
+                    for j = 1:length(Del)
+                        id = sprintf('`EleUsuCod` = %d', Del(j));
+                        obj.BD.Delete_Registro("electrodomesticos_usuario", id);
+                    end
+                end
+                
+                % Identificar los registros que deben ser eliminados
+                %idsToDelete = setdiff(existingIDs, [newIDs, updatedIDs]);
+                
+                % Eliminar los registros que ya no están presentes en la lista de objetos
+                %for i = 1:length(idsToDelete)
+                    %sqlquery = sprintf('DELETE FROM electrodomesticos_usuario WHERE EleUsuEleCod = "%s"', idsToDelete(i));
+                    %exec(obj.BD.conn, sqlquery);
+                %end
+            end
+            function SQLrecibos_usuario(obj, data)
+            registrosActuales = obj.recibos_usuario();
+            existingIDs = [registrosActuales.codigo];
+            Del = setdiff(existingIDs, [data.codigo]);
+            
+            for i = 1:length(data)
+                if ~isempty(find(existingIDs == data(i).codigo))
+                    % Construir la cláusula SET de la consulta SQL
+                    sqlquery = sprintf(['`RecConMen` = %f, ' ...
+                                        '`RecCosTot` = %f, ' ...
+                                        '`RecA` = %d, ' ...
+                                        '`RecM` = %d, ' ...
+                                        '`RecEstReg` = ''A'' '], ...
+                                        data(i).conMensual, ...
+                                        data(i).costoTotal, ...
+                                        data(i).anio, ...
+                                        data(i).mes);
+                    
+                    % Construir la condición WHERE de la consulta SQL
+                    id = sprintf('`RecCod` = %d', data(i).codigo);
+                    
+                    % Llamar a la función Update_Registro
+                    obj.BD.Update_Registro("recibos", sqlquery, id);
+                else
+                    dato = table(data(i).conMensual, data(i).costoTotal, ...
+                                 data(i).anio, data(i).mes, "A", ...
+                                 'VariableNames', {'RecConMen', 'RecCosTot', 'RecA', 'RecM', 'RecEstReg'});
+                    obj.BD.Insertar_Registro("recibos", dato);
+                end
+            end
         
+            for j = 1:length(Del)
+                id = sprintf('`RecCod` = %d', Del(j));
+                obj.BD.Delete_Registro("recibos", id);
+            end
+            end   
     end
 end
