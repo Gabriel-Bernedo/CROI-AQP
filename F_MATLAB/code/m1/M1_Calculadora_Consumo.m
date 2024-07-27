@@ -9,6 +9,7 @@ classdef M1_Calculadora_Consumo
         tipo
         historial_e
         historial_r
+        usuario
     end
 
     methods
@@ -21,6 +22,7 @@ classdef M1_Calculadora_Consumo
             obj.ambientes = consulta.ambiente();
             obj.ele_base = consulta.electrodomesticos();
             obj.tipo = consulta.tipo();
+            %obj.usuario = usuario;
             if isempty(obj.electrodomesticos)
                 obj.historial_e = 0;
             else
@@ -51,7 +53,6 @@ classdef M1_Calculadora_Consumo
         %FRONTEND :: % (codigo)
         function obj = D_Electrodomesticos(obj, id)
             for i = 1 : width(obj.electrodomesticos)
-                obj.electrodomesticos(i).codigo
                 if(obj.electrodomesticos(i).codigo == id)
                     obj.electrodomesticos(i) = [];
                     break;
@@ -78,9 +79,34 @@ classdef M1_Calculadora_Consumo
             end
         end
 
-        %Falta Completar
         function data = Get_Electrodomesticos(obj)
             data = obj.electrodomesticos;
+        end
+
+        function tabla = Table_Electrodomesticos(obj)
+            datos = obj.Get_Electrodomesticos();
+
+            tabla = 0;
+        end
+        function item = Item_Ambiente(obj)
+            item = {};
+            for i = 1: width(obj.ambientes)
+                item{end+1} = obj.ambientes(i).nombre;
+            end
+        end
+        function item = Item_Tipo(obj)
+            item = {};
+            for i = 1: width(obj.tipo)
+                item{end+1} = obj.tipo(i).nombre;
+            end
+        end
+        function item = Item_Electrodomestico(obj, ambiente)
+            item = {};
+            for i = 1: width(obj.ele_base)
+                if strcmp(obj.ele_base(i).ambiente.nombre, ambiente)
+                    item{end+1} = obj.ele_base(i).nombre;
+                end
+            end
         end
     end
 end
