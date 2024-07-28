@@ -161,6 +161,11 @@ classdef M1_Calculadora_Consumo
         function data = Get_Recibos(obj)
             data = obj.recibos;
         end
+
+        % Función para obtener los datos de radiación solar
+        function data = Get_Radiacion(obj)
+            data = obj.radiacion;
+        end
         function table = Table_Recibos(obj)
             table = {};
             for i = 1 : numel(obj.recibos)
