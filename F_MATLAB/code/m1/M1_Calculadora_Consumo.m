@@ -145,7 +145,8 @@ classdef M1_Calculadora_Consumo
             end
         end
 
-        % Función para editar Recibos
+
+        %FRONTEND :: % (codigo, consumo, costo, Año, Mes)
         function obj = E_Recibos(obj, data)
             for i = 1 : length(obj.recibos)
                 if(data{1} == obj.recibos(i).codigo)
