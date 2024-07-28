@@ -37,7 +37,7 @@ z = x.Get_Recibos()
 %%
 x = x.D_Recibos(22)
 %%
-y = {5,20, 20, 2015, 6};
+y = {3,20, 20, 2015, 6};
 x = x.E_Recibos(y);
 z = x.Get_Recibos()
 %%
