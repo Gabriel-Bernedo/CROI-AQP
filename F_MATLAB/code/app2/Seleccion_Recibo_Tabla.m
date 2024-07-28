@@ -5,9 +5,8 @@ function Seleccion_Recibo_Tabla(app)
     app.B_EliminarRecibo_1.Visible = "off";
     app.B_ActualizarRecibo_1.Visible = "off";
     selection = app.T_Recibo_1.Selection;
-    x = selection(:,1);
-    rowData = app.T_Recibo_1.Data(x, :)
+    rowData = app.T_Recibo_1.Data([selection(:,1)], :);
     app.Fi_ReciboCostoTotal_1.Value = rowData{3};
     app.Fi_ReciboConsumo_1.Value = rowData{2};
-    app.D_Mes_Gestionar_1.Value = app.D_Mes_Gestionar_1.Items{rowData{5}};
+    app.D_Fecha_Recibo.Value = datetime(rowData{4}, rowData{5}, 1);
 end
