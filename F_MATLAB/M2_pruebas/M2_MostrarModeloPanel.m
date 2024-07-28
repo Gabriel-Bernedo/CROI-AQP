@@ -91,7 +91,7 @@ function conn = conectarBD()
     %Usuario de tu conexion
     username = 'root';
     %password de tu conexion
-    password = '1234';
+    password = '';
     driver = 'com.mysql.cj.jdbc.Driver';
     url = 'jdbc:mysql://localhost:3306/mydb';
     conn = database(dbname, username, password,driver, url);
