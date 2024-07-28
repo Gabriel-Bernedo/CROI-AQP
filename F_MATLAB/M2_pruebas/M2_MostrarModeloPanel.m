@@ -58,6 +58,14 @@ function M2_MostrarModeloPanel(app)
     
     %SOLUCION
     app.MODELOEditField.Value = string(mostrar.modelo);
+    
+    %Datos para calcular costos
+    global costoPanel;
+    costoPanel = mostrar.costo;
+
+    global costoPanelMantenimiento;
+    costoPanelMantenimiento = mostrar.costoMan;
+
 end
 
 function datos = obtenerDatosPanel()
@@ -78,6 +86,7 @@ function datos = obtenerDatosPanel()
     datos.alto = sel.PanAlt;
     datos.costo = sel.PanCosMon;
     datos.tvida = sel.PanTieVid;
+    datos.costoMan = sel.PanCosMan;
 
     close(conn);
 

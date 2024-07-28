@@ -56,6 +56,14 @@ function M2_MostrarModeloBateria(app)
 
     %parte SOLUCION
     app.MODELOEditField_2.Value = string(mostrar.modelo);
+
+    %Datos para calcular costos
+    global costoBateria;
+    costoBateria = mostrar.costo;
+
+    global costoBateriaMantenimiento;
+    costoBateriaMantenimiento = mostrar.costoMan;
+
 end
 
 function datos = obtenerDatosBateria()
@@ -63,7 +71,7 @@ function datos = obtenerDatosBateria()
     %conexion BD
     conn = conectarBD();
 
-    % Leer los datos de la tabla 'panelsolar'
+    % Leer los datos de la tabla 'bateria'
     ambiente = sqlread(conn, 'bateria');
 
     % Seleccionar la primera fila de datos
@@ -76,6 +84,7 @@ function datos = obtenerDatosBateria()
     datos.alto = sel.BatAlt;
     datos.costo = sel.BatCosMon;
     datos.tvida = sel.BatTieVid;
+    datos.costoMan = sel.BatCosMan;
 
     close(conn);
 

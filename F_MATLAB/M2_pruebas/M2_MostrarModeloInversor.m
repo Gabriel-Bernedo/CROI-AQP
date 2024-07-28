@@ -45,6 +45,14 @@ function M2_MostrarModeloInversor(app)
 
     %parte INVERSOR
     app.MODELOEditField_3.Value = string(mostrar.modelo);
+
+    %Datos para calcular costos
+    global costoInversor;
+    costoInversor = mostrar.costo;
+
+    global costoInversorMantenimiento;
+    costoInversorMantenimiento = mostrar.costoMan;
+
 end
 
 function datos = obtenerDatosInversor()
@@ -52,7 +60,7 @@ function datos = obtenerDatosInversor()
     %conexion BD
     conn = conectarBD();
 
-    % Leer los datos de la tabla 'panelsolar'
+    % Leer los datos de la tabla 'inversor'
     ambiente = sqlread(conn, 'inversor');
 
     % Seleccionar la primera fila de datos
@@ -63,6 +71,7 @@ function datos = obtenerDatosInversor()
     datos.voladmisible = sel.InvAdmVol;
     datos.costo = sel.InvCosMon;
     datos.tvida = sel.InvTieVid;
+    datos.costoMan = sel.InvCosMan;
 
     close(conn);
 end
