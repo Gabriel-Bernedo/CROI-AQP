@@ -29,7 +29,7 @@ classdef C_G_Recomendacion_PV
             obj.inversor = inversor;
             obj.cantidad_panel = cantidad_panel;
             obj.cantidad_bateria = cantidad_bateria;
-            obj.costo_instalacion = 0;
+            obj.costo_instalacion = 1000;
         end
         function obj = config_costo_instalacion(obj, costo_instalacion)
             obj.costo_instalacion = costo_instalacion;
@@ -48,8 +48,14 @@ classdef C_G_Recomendacion_PV
         end
 
         function x = costoTotal(obj)
-            x = obj.costo_instalacion;
+            x = obj.costoInstalacion();
             x = x + obj.costoCompra();
+        end
+
+        function x = costoInstalacion(obj);
+            x = 1200;
+            x = x + obj.cantidad_panel * 100;
+            x = x + obj.cantidad_bateria * 20;
         end
 
         function x = costoCompra(obj)

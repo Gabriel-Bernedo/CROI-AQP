@@ -109,9 +109,6 @@ classdef C_G_Electrodomestico < C_G_ElectrodomesticoBase
          x = obj.ConsumoDiarioPromedio() * 30;
       end
 
-      function result = isEmpty(obj)
-        result = isempty(obj.codigo) || obj.codigo == 0;
-      end
       function data = to_String(obj)
           data = {obj.codigo,obj.nombre, obj.consumo_potencia, obj.frecuencia_dia, obj.frecuencia_noche, obj.frecuencia_semana, obj.tipo.nombre};
       end

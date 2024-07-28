@@ -3,7 +3,6 @@ classdef M1_Calculadora_Consumo
         recibos
         electrodomesticos
         ele_base
-        rec_base
         costo_Kw
         radiacion
         ambientes
@@ -22,13 +21,17 @@ classdef M1_Calculadora_Consumo
             obj.radiacion = consulta.radiacion_mes_temperatura();
             obj.ambientes = consulta.ambiente();
             obj.ele_base = consulta.electrodomesticos();
-            obj.rec_base = consulta.recibo();
             obj.tipo = consulta.tipo();
             %obj.usuario = usuario;
             if isempty(obj.electrodomesticos)
                 obj.historial_e = 0;
             else
                 obj.historial_e = obj.electrodomesticos(end).codigo;
+            end
+            if isempty(obj.recibos)
+                obj.historial_r = 0;
+            else
+                obj.historial_r = obj.recibos(end).codigo;
             end
         end
 
@@ -156,6 +159,13 @@ classdef M1_Calculadora_Consumo
         % Función para obtener los Recibos
         function data = Get_Recibos(obj)
             data = obj.recibos;
+        end
+        function table = Table_Recibos(obj)
+            table = {};
+            for i = 1 : numel(obj.recibos)
+                recibosstr = obj.recibos(i).to_String();
+                table(end+1, :) = recibosstr(:);
+            end
         end
     end
 end

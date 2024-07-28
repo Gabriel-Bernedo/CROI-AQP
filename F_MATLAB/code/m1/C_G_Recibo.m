@@ -24,5 +24,8 @@ classdef C_G_Recibo
             obj.RecA = RecA;
             obj.RecM = RecM;   
         end
+        function data = to_String(obj)
+          data = {obj.codigo, obj.consumo, obj.costo, obj.RecA, obj.RecM};
+        end
     end
 end
