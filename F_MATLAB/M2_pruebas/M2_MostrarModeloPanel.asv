@@ -45,19 +45,7 @@ end
 %}
 function M2_MostrarModeloPanel(app)
     %conectando BD para tabla 'panelsolar'
-    mostrar = obtenerDatosPanel();
-    
-    %asignar valores
-    app.Fi_Modelo_Panel.Value = string(mostrar.modelo);
-    app.Fi_Potencia_Panel.Value = mostrar.potencia;
-    app.Fi_Voltaje_Panel.Value = mostrar.voltaje;
-    app.Fi_Ancho_Panel.Value = mostrar.ancho;
-    app.Fi_Alto_Panel.Value = mostrar.alto;
-    app.Fi_Costo_Panel.Value = mostrar.costo;
-    app.Fi_Tiempo_Vida_Panel.Value = mostrar.tvida;
-    
-    %SOLUCION
-    app.MODELOEditField.Value = string(mostrar.modelo);
+    datos = obtenerDatosPanel();
 end
 
 function datos = obtenerDatosPanel()
@@ -71,32 +59,7 @@ function datos = obtenerDatosPanel()
     % Seleccionar la primera fila de datos
     sel = ambiente(1, :);
     
-    datos.modelo = sel.PanMod;
-    datos.potencia = sel.PanPot;
-    datos.voltaje = 0;
-    datos.ancho = sel.PanAnc;
-    datos.alto = sel.PanAlt;
-    datos.costo = sel.PanCosMon;
-    datos.tvida = sel.PanTieVid;
-
-    close(conn);
+    
 
 
 end
-
-%{
-function conn = conectarBD()
-   %nombre de tu conexion
-    dbname = 'mydb';
-    %Usuario de tu conexion
-    username = 'root';
-    %password de tu conexion
-    password = '1234';
-    driver = 'com.mysql.cj.jdbc.Driver';
-    url = 'jdbc:mysql://localhost:3306/mydb';
-    conn = database(dbname, username, password,driver, url);
-    if ~isopen(conn)
-        error('No se pudo conectar a la base de datos: %s', conn.Message);
-    end
-end
-%}
