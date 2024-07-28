@@ -1,25 +1,16 @@
-function mostrar = M2_MostrarModeloBateria(tipo)
+function M2_MostrarModeloBateria(app)
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
-    switch tipo
-        case 'modelo'
-            mostrar = mostrarModelo();
-        case 'capacidad'
-            mostrar = mostrarCapacidad();
-        case 'largo'
-            mostrar = mostrarLargo();
-        case 'ancho'
-            mostrar = mostrarAncho();
-        case 'alto'
-            mostrar = mostrarAlto();
-        case 'costo'
-            mostrar = mostrarCosto();
-        case 'tvida'
-            mostrar = mostrarTvida();
-        otherwise
-            error('Tipo no válido.');
-    end
+    app.Fi_Modelo_Bateria.Value = mostrarModelo();
+    app.Fi_Capacidad_Bateria.Value = mostrarCapacidad();
+    app.Fi_Largo_Bateria.Value = mostrarLargo();
+    app.Fi_Ancho_Bateria.Value = mostrarAncho();
+    app.Fi_Alto_Bateria.Value = mostrarAlto();
+    app.Fi_Costo_Bateria.Value = mostrarCosto();
+    app.Fi_Tiempo_Vida_Bateria.Value = mostrarTvida();
 
+    %parte SOLUCION
+    app.MODELOEditField_2.Value = mostrarModelo();
 end
 
 function mostrar = mostrarModelo()

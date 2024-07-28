@@ -1,21 +1,14 @@
-function mostrar = M2_MostrarModeloInversor(tipo)
+function M2_MostrarModeloInversor(app)
 %M2_MOSTRARMODELOINVERSOR Summary of this function goes here
 %   Detailed explanation goes here
-    switch tipo
-        case 'modelo'
-            mostrar = mostrarModelo();
-        case 'potencia'
-            mostrar = mostrarPotencia();
-        case 'vadmisible'
-            mostrar = mostrarVadmisible();
-        case 'costo'
-            mostrar = mostrarCosto();
-        case 'tvida'
-            mostrar = mostrarTvida();
-        otherwise
-            error('Tipo no válido.');
-    end
+    app.Fi_Modelo_Inversor.Value = mostrarModelo();
+    app.Fi_Potencia_Inversor.Value = mostrarPotencia();
+    app.Fi_VAdmisible_Inversor.Value = mostrarVadmisible();
+    app.Fi_Costo_Inversor.Value = mostrarCosto();
+    app.Fi_Tiempo_Vida_Inversor.Value = mostrarTvida();
 
+    %parte INVERSOR
+    app.MODELOEditField_3.Value = mostrarModelo();
 end
 
 function mostrar = mostrarModelo()
