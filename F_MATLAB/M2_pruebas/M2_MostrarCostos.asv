@@ -2,14 +2,14 @@ function M2_MostrarCostos(app)
 % M2_MostrarCostos Summary of this function goes here
     % Detailed explanation goes here
     %parte SOLUCION
-    app.Fi_Costo_Instalacion_Solucion.Value = mostrarCostoInstalacion();
+    app.Fi_Costo_Instalacion_Solucion.Value = mostrarCostos();
     app.Fi_Costo_Compra_Solucion.Value = mostrarCostoCompra();
     app.Fi_Costo_Mantenimiento_Solucion.Value = mostrarCostoMantenimiento();
     app.Fi_Costo_Total_Solucion.Value = mostrarCostoTotal();
 end
 
 % Funciones locales
-function costos = mostrarCostoInstalacion()
+function costos = mostrarCostos()
     costos = 100000;
 end
 

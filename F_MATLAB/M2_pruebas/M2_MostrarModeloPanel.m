@@ -1,25 +1,16 @@
-function mostrar = M2_MostrarModeloPanel(tipo)
+function M2_MostrarModeloPanel(app)
 %M2_MOSTRARMODELO Summary of this function goes here
 %   Detailed explanation goes here
-
-    switch tipo
-        case 'modelo'
-            mostrar = mostrarModelo();
-        case 'potencia'
-            mostrar = mostrarPotencia();
-        case 'voltaje'
-            mostrar = mostrarVoltaje();
-        case 'ancho'
-            mostrar = mostrarAncho();
-        case 'alto'
-            mostrar = mostrarAlto();
-        case 'costo'
-            mostrar = mostrarCosto();
-        case 'tvida'
-            mostrar = mostrarTvida();
-        otherwise
-            error('Tipo no válido.');
-    end
+    app.Fi_Modelo_Panel.Value = mostrarModelo();
+    app.Fi_Potencia_Panel.Value = mostrarPotencia();
+    app.Fi_Voltaje_Panel.Value = mostrarVoltaje();
+    app.Fi_Ancho_Panel.Value = mostrarAncho();
+    app.Fi_Alto_Panel.Value = mostrarAlto();
+    app.Fi_Costo_Panel.Value = mostrarCosto();
+    app.Fi_Tiempo_Vida_Panel.Value = mostrarTvida();
+    
+    %SOLUCION
+    app.MODELOEditField.Value = mostrarModelo();
        
 end
 
