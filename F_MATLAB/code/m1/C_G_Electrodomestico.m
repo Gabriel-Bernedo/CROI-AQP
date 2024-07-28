@@ -110,7 +110,7 @@ classdef C_G_Electrodomestico < C_G_ElectrodomesticoBase
       end
 
       function data = to_String(obj)
-          data = {obj.codigo,obj.nombre, obj.consumo_potencia, obj.frecuencia_dia, obj.frecuencia_noche, obj.frecuencia_semana, obj.tipo.nombre};
+          data = {obj.codigo,obj.nombre, obj.consumo_potencia, obj.frecuencia_dia, obj.frecuencia_noche, obj.frecuencia_semana,obj.cantidad, obj.tipo.nombre};
       end
 
 

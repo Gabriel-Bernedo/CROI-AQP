@@ -68,7 +68,7 @@ classdef M1_Calculadora_Consumo
         %FRONTEND :: % (codigo, potencia, dia, noche, semana, cantidad, tipo)
         function obj = E_Electrodomesticos(obj, data)
             for j = 1 : width(obj.tipo)
-                if(data{7} == obj.tipo(j).nombre)
+                if strcmp(data{7}, obj.tipo(j).nombre)
                     tip = obj.tipo(j);
                 end
             end
@@ -149,7 +149,7 @@ classdef M1_Calculadora_Consumo
         %FRONTEND :: % (codigo, consumo, costo, Año, Mes)
         function obj = E_Recibos(obj, data)
             for i = 1 : length(obj.recibos)
-                if(data{1} == obj.recibos(i).codigo)
+                if (data{1} == obj.recibos(i).codigo)
                     obj.recibos(i).consumo = data{2};
                     obj.recibos(i).costo = data{3};
                     obj.recibos(i).RecA = data{4};
