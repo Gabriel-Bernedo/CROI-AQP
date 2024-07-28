@@ -27,26 +27,26 @@ function mostrar = mostrarModelo()
     mostrar = 'Panel ModeloXX';
 end
 
-function mostrar = mostrarPotencia()
+function mostrar = mostrarPotencia();
     mostrar = 100;
 end
 
-function mostrar = mostrarVoltaje()
+function mostrar = mostrarVoltaje();
     mostrar = 110;
 end
 
-function mostrar = mostrarAncho()
+function mostrar = mostrarAncho();
     mostrar = 120;
 end
 
-function mostrar = mostrarAlto()
+function mostrar = mostrarAlto();
     mostrar = 130;
 end
 
-function mostrar = mostrarCosto()
-    mostrar = 140;
+function mostrar = mostrarCostos();
+    mostrar = 1;
 end
 
-function mostrar = mostrarTvida()
-    mostrar = 150;
+function mostrar = mostrarTvida();
+    mostrar = 100;
 end
