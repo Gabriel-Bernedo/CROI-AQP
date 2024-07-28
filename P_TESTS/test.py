@@ -1,12 +1,13 @@
 import matlab.engine
 
 eng = matlab.engine.start_matlab()
-eng.addpath(r'C:\Users\ASUS\Documents\Github\CROI-AQP\F_MATLAB')
+eng.addpath(r'C:\Users\Jeremy\CROI-AQP\F_MATLAB\code')
 
 
 try:
     print(eng.CalcularROI(100,10))
     print(eng.Hello())
+    print(f" 100 | 10 : ROI = {eng.CalcularROI(100,10)}")
 except matlab.engine.MatlabExecutionError as e:
     eng.quit()
 

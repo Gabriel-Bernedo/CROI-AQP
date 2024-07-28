@@ -1,0 +1,12 @@
+function mostrar_Imagen(app, ambiente, base_codigo)
+    % Crear el path de la imagen
+    imagePath = fullfile('D:\ProyectoIPS\F_MATLAB\Imagenes', ['img_', ambiente], ['img_', num2str(base_codigo), '.png']);
+    
+    % Verificar si la imagen existe
+    if isfile(imagePath)
+        % Mostrar la imagen en el componente uiimage
+        app.Image9.ImageSource = imagePath;
+    else
+        warning('La imagen no existe: %s', imagePath);
+    end
+end
