@@ -105,17 +105,6 @@ classdef C_G_Tablas
                 RegistroElectrodomesticosUsuario(i) = C_G_Electrodomestico(elec_base, tabla.EleUsuCod(i), tabla.EleUsuFreSem(i), tabla.EleUsuFreDia(i), tabla.EleUsuFreNoc(i), tabla.EleUsuPot(i), tabla.EleUsuCan(i), tipo);
             end
         end
-
-        function RegistroRecibosUsuario = recibos_usuario(obj)
-            tabla = obj.BD.Registro_Tabla('Recibo');
-            RegistroRecibos = obj.recibo(); % Cargar los datos necesarios
-            RegistroRecibosUsuario = C_G_Recibo.empty(height(tabla), 0);
-            for i = 1:height(tabla)
-                elec_base = RegistroElectrodomesticos([RegistroElectrodomesticos.base_codigo] == tabla.EleUsuEleCod(i));
-                tipo = RegistroTipo([RegistroTipo.codigo] == tabla.TipCod(i));
-                RegistroElectrodomesticosUsuario(i) = C_G_Electrodomestico(elec_base, tabla.EleUsuCod(i), tabla.EleUsuFreSem(i), tabla.EleUsuFreDia(i), tabla.EleUsuFreNoc(i), tabla.EleUsuPot(i), tabla.EleUsuCan(i), tipo);
-            end
-        end
         
         function RegistroRecomendacionPV = recomendacionpv(obj)
             tabla = obj.BD.Registro_Tabla('recomendacionpv');
@@ -136,9 +125,9 @@ classdef C_G_Tablas
         function SQLelectrodomesticos_usuario(obj, data)
                 registrosActuales = obj.electrodomesticos_usuario();
                 existingIDs = [registrosActuales.codigo];
-                Del = setdiff(existingIDs,[data.codigo]);
+                Del = setdiff(existingIDs, [data.codigo]);
                 for i = 1:length(data)
-                    if ~isempty(find(existingIDs == data(i).codigo))
+                    if ~isempty(find(existingIDs == data(i).codigo,1))
                         % Construir la cláusula SET de la consulta SQL
                         sqlquery = sprintf(['`EleUsuFreDia` = %f, ' ...
                                             '`EleUsuFreSem` = %f, ' ...
@@ -175,51 +164,42 @@ classdef C_G_Tablas
                         obj.BD.Delete_Registro("electrodomesticos_usuario", id);
                     end
                 end
-                
-                % Identificar los registros que deben ser eliminados
-                %idsToDelete = setdiff(existingIDs, [newIDs, updatedIDs]);
-                
-                % Eliminar los registros que ya no están presentes en la lista de objetos
-                %for i = 1:length(idsToDelete)
-                    %sqlquery = sprintf('DELETE FROM electrodomesticos_usuario WHERE EleUsuEleCod = "%s"', idsToDelete(i));
-                    %exec(obj.BD.conn, sqlquery);
-                %end
             end
             function SQLrecibos_usuario(obj, data)
-            registrosActuales = obj.recibos_usuario();
-            existingIDs = [registrosActuales.codigo];
-            Del = setdiff(existingIDs, [data.codigo]);
-            
-            for i = 1:length(data)
-                if ~isempty(find(existingIDs == data(i).codigo))
-                    % Construir la cláusula SET de la consulta SQL
-                    sqlquery = sprintf(['`RecConMen` = %f, ' ...
-                                        '`RecCosTot` = %f, ' ...
-                                        '`RecA` = %d, ' ...
-                                        '`RecM` = %d, ' ...
-                                        '`RecEstReg` = ''A'' '], ...
-                                        data(i).conMensual, ...
-                                        data(i).costoTotal, ...
-                                        data(i).anio, ...
-                                        data(i).mes);
-                    
-                    % Construir la condición WHERE de la consulta SQL
-                    id = sprintf('`RecCod` = %d', data(i).codigo);
-                    
-                    % Llamar a la función Update_Registro
-                    obj.BD.Update_Registro("recibos", sqlquery, id);
-                else
-                    dato = table(data(i).conMensual, data(i).costoTotal, ...
-                                 data(i).anio, data(i).mes, "A", ...
-                                 'VariableNames', {'RecConMen', 'RecCosTot', 'RecA', 'RecM', 'RecEstReg'});
-                    obj.BD.Insertar_Registro("recibos", dato);
+                registrosActuales = obj.recibo();
+                existingIDs = [registrosActuales.codigo];
+                Del = setdiff( existingIDs,[data.codigo]);
+                
+                for i = 1:length(data)
+                    if ~isempty(find(existingIDs == data(i).codigo,1))
+                        % Construir la cláusula SET de la consulta SQL
+                        sqlquery = sprintf(['`RecConMen` = %f, ' ...
+                                            '`RecCosTot` = %f, ' ...
+                                            '`RecA` = %d, ' ...
+                                            '`RecM` = %d, ' ...
+                                            '`RecEstReg` = ''A'' '], ...
+                                            data(i).consumo, ...
+                                            data(i).costo, ...
+                                            data(i).RecA, ...
+                                            data(i).RecM);
+                        
+                        % Construir la condición WHERE de la consulta SQL
+                        id = sprintf('`RecCod` = %d', data(i).codigo);
+                        
+                        % Llamar a la función Update_Registro
+                        obj.BD.Update_Registro("recibo", sqlquery, id);
+                    else
+                        dato = table(data(i).consumo, data(i).costo, ...
+                                     data(i).RecA, data(i).RecM, "A", ...
+                                     'VariableNames', {'RecConMen', 'RecCosTot', 'RecA', 'RecM', 'RecEstReg'});
+                        obj.BD.Insertar_Registro("recibo", dato);
+                    end
                 end
-            end
-        
-            for j = 1:length(Del)
-                id = sprintf('`RecCod` = %d', Del(j));
-                obj.BD.Delete_Registro("recibos", id);
-            end
-            end   
+            
+                for j = 1:length(Del)
+                    id = sprintf('`RecCod` = %d', Del(j));
+                    obj.BD.Delete_Registro("recibo", id);
+                end
+                end   
     end
 end

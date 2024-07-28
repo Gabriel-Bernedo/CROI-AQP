@@ -29,10 +29,21 @@ ambiente = sqlread(conectarBD(),"panelsolar");
 sel = ambiente(ambiente.PanCod == 1,:);
 nombre = sel.PanMod;
 %%
-x = M1_Calculadora_Consumo();
+%x = M1_Calculadora_Consumo();
 %(consumo, costo,RecA,RecM)
 y = {2, 2, 5, 1};
-x.I_Recibos(obj, data)
+x = x.I_Recibos(y)
+z = x.Get_Recibos()
+%%
+x = x.D_Recibos(22)
+%%
+y = {5,20, 20, 2015, 6};
+x = x.E_Recibos(y);
+z = x.Get_Recibos()
 %%
 x = M1_Calculadora_Consumo();
 z = x.Table_Electrodomesticos();
+%%
+%tabla = C_G_Tablas();
+z = x.Get_Recibos();
+tabla.SQLrecibos_usuario(z);
