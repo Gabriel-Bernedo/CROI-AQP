@@ -1,3 +1,5 @@
+%Selección de electrodomésticos en la tabla general
+
 function Seleccion_Electrodomestico_Tabla(app)
     % Obtener la selección y los datos de la tabla
     selection = app.T_Electrodomesticos_Gestionar_1.Selection;
@@ -34,3 +36,5 @@ function Seleccion_Electrodomestico_Tabla(app)
     % Llamar a mostrar_Imagen para mostrar la imagen del electrodoméstico
     mostrar_Imagen(app, electrodomestico.ambiente.nombre, electrodomestico.base_codigo, app.Image7);
 end
+
+%Retorna los datos del electrodoméstico para editarlo

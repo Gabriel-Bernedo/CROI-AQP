@@ -1,3 +1,5 @@
+%Gráfica que muestra consumo promedio del día
+
 function GraficoConsumoTendencia(app)
     % Obtener todos los datos de la tabla
     datos = app.T_Electrodomesticos_Gestionar_1.Data;
@@ -84,3 +86,5 @@ function GraficoConsumoTendencia(app)
     xlim(ax, [0 23]); % Ajustar el margen en el eje X
     ylim(ax, [0 max(sum(uso_hora, 2)) * 1.1]); % Aumentar el margen en el eje Y, 10% más alto que el valor máximo
 end
+
+%Retorna los datos para la gráfica

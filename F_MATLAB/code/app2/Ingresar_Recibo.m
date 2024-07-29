@@ -1,3 +1,5 @@
+%Ingreso de recibo y validación de este
+
 function Ingresar_Recibo(app)
     consumo = app.Fi_ConsumoMensual_IngresarR_1.Value;
     costo = app.Fi_CostoTotal_IngresarR_1.Value;
@@ -14,3 +16,5 @@ function Ingresar_Recibo(app)
     end
     Anadir_Recibo_Default(app);
 end
+
+%Retorna alertas

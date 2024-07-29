@@ -1,3 +1,5 @@
+% Alerta de confirmación para la modificación del recibo
+
 function Update_Recibo(app)
     consumo = app.Fi_ReciboConsumo_1.Value;
     costo = app.Fi_ReciboCostoTotal_1.Value;
@@ -24,3 +26,5 @@ function Update_Recibo(app)
         app.B_ActualizarRecibo_1.Visible = "off";
     end
 end
+
+% Retorna el recibo modificado o no en base a la respuesta de la alerta

@@ -1,3 +1,5 @@
+%Confirmación y selección de eliminación de dato
+
 function Eliminar_Recibo(app)
     selection = app.T_Recibo_1.Selection;
     rowData = app.T_Recibo_1.Data([selection(:,1)], :);
@@ -10,3 +12,5 @@ function Eliminar_Recibo(app)
         Gestionar_Recibo_Default(app);
     end
 end
+
+%No retorna nada

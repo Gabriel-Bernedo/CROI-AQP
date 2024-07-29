@@ -1,3 +1,5 @@
+%Graficación de consumo de los recibos
+
 function Grafica_Recibos(app)
     if height(app.T_Recibo_1.Data) > 0
         app.G_Estadistica.Visible = "on";
@@ -37,3 +39,5 @@ function Grafica_Recibos(app)
         uialert(app.P_Main,'No hay Recibos','Warning','Icon','error');
     end
 end
+
+%Retorna los datos para la gráfica

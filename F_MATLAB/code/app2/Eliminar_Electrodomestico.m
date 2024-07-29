@@ -1,3 +1,5 @@
+%Selección y eliminación de electrodoméstico, con su confirmación
+
 function Eliminar_Electrodomestico(app)
     % Obtener la selección y los datos de la tabla
     selection = app.T_Electrodomesticos_Gestionar_1.Selection;
@@ -25,3 +27,5 @@ function Eliminar_Electrodomestico(app)
         app.M1 = app.M1.D_Electrodomesticos(codigo);
     end
 end
+
+%No retorna nada

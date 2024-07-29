@@ -1,3 +1,5 @@
+%Gráfica para la radiación solar y temperatura
+
 function plotRadiacionTemperatura(app)
     % plotRadiacionTemperatura Grafica datos de radiación solar y temperatura.
     % Esta función obtiene los datos de la clase M1_Calculadora_Consumo
@@ -49,3 +51,5 @@ function plotRadiacionTemperatura(app)
     % Añadir una leyenda
     legend(app.G_RadTemp_Tendencias_1, {'Radiación Solar', 'Temperatura'});
 end
+
+%Retorna los datos para la gráfica

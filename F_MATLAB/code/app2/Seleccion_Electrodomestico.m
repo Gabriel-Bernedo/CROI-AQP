@@ -1,3 +1,5 @@
+%Selecciona el electrodoméstico
+
 function Seleccion_Electrodomestico(app)
     drawnow;
     
@@ -21,3 +23,5 @@ function Seleccion_Electrodomestico(app)
     % Llamar a la función para mostrar la imagen del electrodoméstico
     mostrar_Imagen(app, data.ambiente.nombre, data.base_codigo, app.Image9);
 end
+
+% Retorna datos del electrodoméstico seleccionado (de la tabla padre)

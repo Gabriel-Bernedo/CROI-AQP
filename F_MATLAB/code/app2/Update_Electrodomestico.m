@@ -1,3 +1,5 @@
+% Alerta de confirmación para la modificación de electrodomésticos
+
 function Update_Electrodomestico(app)
     % Obtener los valores de los campos de entrada
     semana = app.Fi_Dias_ModificarE_1.Value;
@@ -59,3 +61,6 @@ function Update_Electrodomestico(app)
         app.Fi_Unidad_Electrodomestico.Editable = "off";
     end
 end
+
+% Retorna el electrodoméstico modificado o no en base a la respuesta de la
+% alerta
