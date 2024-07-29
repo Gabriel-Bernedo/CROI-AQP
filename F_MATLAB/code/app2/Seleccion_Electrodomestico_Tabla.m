@@ -2,7 +2,7 @@ function Seleccion_Electrodomestico_Tabla(app)
     % Obtener la selección y los datos de la tabla
     selection = app.T_Electrodomesticos_Gestionar_1.Selection;
     sel = app.T_Electrodomesticos_Gestionar_1.Data(selection(:,1), :);
-
+    
     % Obtener el nombre del electrodoméstico
     nombreElectrodomestico = sel{2};
 
