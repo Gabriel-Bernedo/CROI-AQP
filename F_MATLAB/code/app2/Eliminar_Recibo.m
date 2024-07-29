@@ -5,6 +5,8 @@ function Eliminar_Recibo(app)
     'Confirmacion', 'Options',{'Si','No'}, 'DefaultOption',2,'CancelOption',2, ...
     'Icon','warning');
     if strcmp ('Si',seleccion)
-        app.M1.D_Recibos(rowData{1});
+        seleccion
+        app.M1 = app.M1.D_Recibos(rowData{1});
+        Tabla_Recibos(app);
     end
 end

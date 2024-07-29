@@ -7,4 +7,5 @@ function Ingresar_Recibo(app)
     %(consumo, costo,RecA,RecM)
     data = {consumo,costo, Year, Month};
     app.M1 = app.M1.I_Recibos(data);
+    uialert(app.P_Main,'Se Registro Correctamente','Listo','Icon','success');
 end
