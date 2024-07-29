@@ -43,6 +43,9 @@ function mostrar = mostrarTvida()
     mostrar = 150;
 end
 %}
+%posicion: 246,85,381,273
+%numero: 198,7,19,18
+%botones: 247,358,380,38
 function M2_MostrarModeloPanel(app)
     %conectando BD para tabla 'panelsolar'
     mostrar = obtenerDatosPanel();
