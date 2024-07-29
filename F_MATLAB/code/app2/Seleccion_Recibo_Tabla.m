@@ -1,3 +1,5 @@
+% Selección de recibo, sin opción de eliminar
+
 function Seleccion_Recibo_Tabla(app)
     app.Fi_ReciboCostoTotal_1.Editable ="off";
     app.Fi_ReciboConsumo_1.Editable = "off";
@@ -10,3 +12,5 @@ function Seleccion_Recibo_Tabla(app)
     app.Fi_ReciboConsumo_1.Value = rowData{2};
     app.D_Fecha_Recibo.Value = datetime(rowData{4}, rowData{5}, 1);
 end
+
+% Datos del recibo seleccionado

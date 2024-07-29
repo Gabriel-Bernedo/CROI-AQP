@@ -1,3 +1,5 @@
+%Gráfico costo KWH por mes desde 2014
+
 function GraficoCostoKWH(app)
     % Datos proporcionados
     data = [
@@ -170,3 +172,5 @@ function GraficoCostoKWH(app)
     xlim(ax, [min(years) max(years)]);
     ylim(ax, [min(avg_cost_per_year) max(avg_cost_per_year) * 1.1]); % Aumentar el margen en el eje Y, 10% más alto que el valor máximo
 end
+
+%Retorna los datos para la gráfica
