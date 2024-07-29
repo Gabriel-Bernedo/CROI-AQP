@@ -33,7 +33,7 @@ classdef C_Usuario
       obj.id = id;
       obj.nombre = nombre;
       obj.direccion = direccion;
-      obj.electrodomesticos = C_Electrodomestico.empty; % Inicializar como un arreglo vacío de objetos C_Electrodomestico
+      obj.electrodomesticos = C_G_Electrodomestico.empty; % Inicializar como un arreglo vacío de objetos C_Electrodomestico
     end
     function obj = Add_Electrodomestico(obj, electrodomestico)
         name = electrodomestico.nombre;
@@ -69,10 +69,13 @@ classdef C_Usuario
             end
         end
     end
+    function data = Get_electrodomestico(obj)
+        data = obj.electrodomesticos;
+    end
     function x = ConsumoTotal(obj, mes)%calcula el consumo total de n meses
         %donde n = parametro mes, de todos los electrodomesticos
       x = 0;
-      for i = 1:length(obj.electrodomesticos)
+      for i = 1:width(obj.electrodomesticos)
         x = x + obj.electrodomesticos(i).ConsumoTotal(mes);
       end
     end
