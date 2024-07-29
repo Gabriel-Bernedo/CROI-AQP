@@ -67,6 +67,7 @@ classdef M1_Calculadora_Consumo
 
         %FRONTEND :: % (codigo, potencia, dia, noche, semana, cantidad, tipo)
         function obj = E_Electrodomesticos(obj, data)
+            
             for j = 1 : width(obj.tipo)
                 if strcmp(data{7}, obj.tipo(j).nombre)
                     tip = obj.tipo(j);
