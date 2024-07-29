@@ -174,5 +174,13 @@ classdef M1_Calculadora_Consumo
                 table(end+1, :) = recibosstr(:);
             end
         end
+        function respt = Search_Recibo(obj,year,mes)
+            respt = false;
+            for i = 1 : width(obj.recibos)
+                if year == obj.recibos(i).RecA && mes == obj.recibos(i).RecM
+                    respt = true;
+                end
+            end
+        end
     end
 end
