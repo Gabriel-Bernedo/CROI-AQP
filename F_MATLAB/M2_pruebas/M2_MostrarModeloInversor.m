@@ -56,7 +56,7 @@ function M2_MostrarModeloInversor(app)
     app.Fi_Costo_Inversor_2.Value = mostrar.costoH;
     app.Fi_Tiempo_Vida_Inversor_2.Value = mostrar.tvidaH;
     %SOLUCION HIBRIDO
-    app.MODELOEditField_6.Value = string(mostrar.modeloH);
+    %app.MODELOEditField_6.Value = string(mostrar.modeloH);
     app.NumInversorH.Value = 1; %lo de arribax2
 
      %Datos para calcular costos
