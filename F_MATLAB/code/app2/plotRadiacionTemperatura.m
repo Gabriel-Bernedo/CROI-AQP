@@ -1,3 +1,5 @@
+%Gráfica para la radiación solar y temperatura
+
 function plotRadiacionTemperatura(app)
     % Crear una instancia de la clase M1_Calculadora_Consumo
     calculadora = app.M1;
@@ -51,3 +53,5 @@ function plotRadiacionTemperatura(app)
     % Agregar descripción en el TextArea
     app.TA_DescripcionAnalisisRadTemp_Tendencias_1.Value = 'La radiacion es optima para uso de Paneles Solares';
 end
+
+%Retorna los datos para la gráfica

@@ -1,3 +1,5 @@
+%Gráfico costo KWH por mes desde 2014
+
 function GraficoCostoKWH(app)
     % Datos proporcionados
     data = [
@@ -178,3 +180,5 @@ function GraficoCostoKWH(app)
     app.TA_DescripcionAnalisisCostoMeses_Tendencias_1.Value = sprintf('Crecimiento promedio anual del costo KWH es: %.2f%%', avg_growth_per_year);
 
 end
+
+%Retorna los datos para la gráfica

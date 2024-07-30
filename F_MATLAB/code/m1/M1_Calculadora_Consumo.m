@@ -13,7 +13,7 @@ classdef M1_Calculadora_Consumo
     end
 
     methods
-        function obj = M1_Calculadora_Consumo()
+        function obj = M1_Calculadora_Consumo(Usuario)
             consulta = C_G_Tablas();
             obj.recibos = consulta.recibo();
             obj.electrodomesticos = consulta.electrodomesticos_usuario();
@@ -22,7 +22,7 @@ classdef M1_Calculadora_Consumo
             obj.ambientes = consulta.ambiente();
             obj.ele_base = consulta.electrodomesticos();
             obj.tipo = consulta.tipo();
-            %obj.usuario = usuario;
+            obj.usuario = Usuario;
             if isempty(obj.electrodomesticos)
                 obj.historial_e = 0;
             else

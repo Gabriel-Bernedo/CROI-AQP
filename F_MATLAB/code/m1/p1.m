@@ -1,21 +1,22 @@
+computerName = getenv('COMPUTERNAME');
+disp(['El nombre de tu computadora es: ', computerName]);
 %%
-x = M1_Calculadora_Consumo();
-%(consumo, costo,RecA,RecM)
-y = {2, 2, 5, 1};
-x = x.I_Recibos(y)
-z = x.Get_Recibos()
-%%
-%x = x.D_Recibos(1)
-z = x
+% Obtener el nombre de la computadora
+hostname = char(java.net.InetAddress.getLocalHost.getHostName);
 
+% Obtener la dirección IP de la computadora
+ipAddress = char(java.net.InetAddress.getByName(char(java.net.InetAddress.getLocalHost.getHostName)).getHostAddress);
+
+disp(['La dirección IP de tu computadora es: ', ipAddress]);
 %%
-y = {5,20, 20, 2015, 6};
-x = x.E_Recibos(y);
-z = x.Get_Recibos()
+userName = getenv('USERNAME');
+disp(['El nombre de usuario es: ', userName]);
 %%
-x = M1_Calculadora_Consumo();
-z = x.Table_Electrodomesticos();
+usu = C_Usuario(userName,computerName,ipAddress);
+x = M1_Calculadora_Consumo(usu);
+%FRONTEND :: % % ("name_E",potencia, dia, noche, semana, cantidad, tipo)
 %%
-tabla = C_G_Tablas();
-z = x.Get_Recibos();
-tabla.SQLrecibos_usuario(z);
+x = x.I_Electrodomesticos({"Batidora",1200,1,2,3,1,"Esencial"});
+%%
+x.usuario.electrodomesticos = x.Get_Electrodomesticos;
+x.usuario.Get_electrodomestico()

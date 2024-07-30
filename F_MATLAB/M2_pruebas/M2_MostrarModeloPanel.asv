@@ -43,7 +43,7 @@ function mostrar = mostrarTvida()
     mostrar = 150;
 end
 %}
-%posicion de paneles en app: 246,85,381,273
+%posicion de paneles en a: 246,85,381,273
 
 function M2_MostrarModeloPanel(app)
     %conectando BD para tabla 'panelsolar'

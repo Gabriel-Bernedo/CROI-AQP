@@ -1,3 +1,6 @@
+%Recibe un electrodoméstico y valida sus datos para evitar errores del
+%usuario
+
 function Agregar_Electrodomestico(app)
     % Obtener los valores de los campos
     dia = app.Fi_HorasDias_IngresarE_1.Value;
@@ -68,3 +71,5 @@ function Agregar_Electrodomestico(app)
     % Mostrar mensaje de éxito con ícono de éxito
     uialert(app.P_Main, 'Electrodoméstico agregado exitosamente.', 'Éxito', 'Icon', 'success');
 end
+
+%No retorna nada, solo añade el electrodomestico

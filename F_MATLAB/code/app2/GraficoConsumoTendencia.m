@@ -1,3 +1,5 @@
+%Gráfica que muestra consumo promedio del día
+
 function GraficoConsumoTendencia(app)
     % Obtener todos los datos de la tabla
     datos = app.T_Electrodomesticos_Gestionar_1.Data;
@@ -107,3 +109,5 @@ function uniqueNames = makeUniqueColumnNames(names)
         end
     end
 end
+
+%Retorna los datos para la gráfica
