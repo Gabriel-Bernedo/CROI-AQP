@@ -36,13 +36,6 @@ end
 function M2_MostrarModeloInversor(app)
     mostrar = obtenerDatosInversor();
 
-    %Datos para calcular costos
-    global costoInversor;
-    costoInversor = mostrar.costo;
-
-    global costoInversorMantenimiento;
-    costoInversorMantenimiento = mostrar.costoMan;
-
     %   Detailed explanation goes here
     %MOSTRAR SISTEMA YYYY
     app.Fi_Modelo_Inversor.Value = string(mostrar.modelo);
@@ -62,6 +55,14 @@ function M2_MostrarModeloInversor(app)
     app.Fi_Tiempo_Vida_Inversor_2.Value = mostrar.tvida;
     %SOLUCION HIBRIDO
     app.MODELOEditField_6.Value = string(mostrar.modelo);
+
+
+    %Datos para calcular costos
+    global costoInversor;
+    costoInversor = mostrar.costo;
+
+    global costoInversorMantenimiento;
+    costoInversorMantenimiento = mostrar.costoMan;
 
 end
 

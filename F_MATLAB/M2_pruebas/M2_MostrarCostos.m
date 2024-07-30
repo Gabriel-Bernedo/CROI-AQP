@@ -40,17 +40,23 @@ function M2_MostrarCostos(app)
     %}
     %function M2_MostrarCostos(app)
 
-    global costoPanel costoPanelMantenimiento costoBateria costoBateriaMantenimiento costoInversor costoInversorMantenimiento;
+    global costoPanel costoPanelMantenimiento costoBateria costoBateriaMantenimiento costoInversor costoInversorMantenimiento ;
     M2_MostrarModeloPanel(app);
     M2_MostrarModeloBateria(app);
     M2_MostrarModeloInversor(app);
-
+    
     
     %parte SOLUCION
     app.Fi_Costo_Instalacion_Solucion.Value = 0;
     app.Fi_Costo_Compra_Solucion.Value = costoPanel + costoBateria + costoInversor + 0;
     app.Fi_Costo_Mantenimiento_Solucion.Value = costoPanelMantenimiento + costoBateriaMantenimiento + costoInversorMantenimiento+0;
     app.Fi_Costo_Total_Solucion.Value = app.Fi_Costo_Instalacion_Solucion.Value + app.Fi_Costo_Compra_Solucion.Value + app.Fi_Costo_Mantenimiento_Solucion.Value+0;
+    
+    %parte SOLUCION HIBRIDA
+    app.Fi_Costo_Instalacion_Solucion_2.Value = 0;
+    app.Fi_Costo_Compra_Solucion_2.Value = costoPanel + costoInversor + 0;
+    app.Fi_Costo_Mantenimiento_Solucion_2.Value = costoPanelMantenimiento  + costoInversorMantenimiento + 0;
+    app.Fi_Costo_Total_Solucion_2.Value = app.Fi_Costo_Instalacion_Solucion_2.Value + app.Fi_Costo_Compra_Solucion_2.Value + app.Fi_Costo_Mantenimiento_Solucion_2.Value + 0;
     
     disp(['costoPanel: ', num2str(costoPanel)]);
     disp(['costoPanelMantenimiento: ', num2str(costoPanelMantenimiento)]);
