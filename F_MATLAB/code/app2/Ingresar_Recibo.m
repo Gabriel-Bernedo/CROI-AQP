@@ -8,11 +8,11 @@ function Ingresar_Recibo(app)
     Year = year(fecha);
     %(consumo, costo,RecA,RecM)
     if(app.M1.Search_Recibo(Year,Month))
-        uialert(app.P_Main,'Ya existe un recibo registrado con ese mes y año','Duplicado','Icon','error');
+        uialert(app.UIFigure,'Ya existe un recibo registrado con ese mes y año','Duplicado','Icon','error');
     else
         data = {consumo,costo, Year, Month};
         app.M1 = app.M1.I_Recibos(data);
-        uialert(app.P_Main,'Se Registro Correctamente','Listo','Icon','success');
+        uialert(app.UIFigure,'Se Registro Correctamente','Listo','Icon','success');
     end
     Anadir_Recibo_Default(app);
 end

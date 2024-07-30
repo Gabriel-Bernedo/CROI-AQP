@@ -3,6 +3,8 @@
 function Grafica_Recibos(app)
     if height(app.T_Recibo_1.Data) > 0
         app.G_Estadistica.Visible = "on";
+        app.P_TablaRecibo_Consumo_1.Visible = "off";
+        app.P_IngresarRecibo_1.Visible = "off";
         sel = app.T_Recibo_1.Data;
         sel_num = cell2mat(sel(:,4));
         app.A_Year_Estadistica.Items = string(unique(sel_num))';

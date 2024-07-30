@@ -1,3 +1,4 @@
+
 % Alerta de confirmación para la modificación de electrodomésticos
 
 function Update_Electrodomestico(app)
@@ -35,7 +36,7 @@ function Update_Electrodomestico(app)
         semanaActual, semana, cantidadActual, cantidad, tipoActual, tipo);
     
     % Cuadro de diálogo de confirmación
-    seleccion = uiconfirm(app.P_Main, mensajeConfirmacion, ...
+    seleccion = uiconfirm(app.UIFigure, mensajeConfirmacion, ...
         'Confirmacion', 'Options', {'Si', 'No'}, 'DefaultOption', 2, 'CancelOption', 2, ...
         'Icon', 'warning');
     

@@ -16,30 +16,30 @@ function Agregar_Electrodomestico(app)
     
     % Validar los datos ingresados
     if semana < 1
-        uialert(app.P_Main, 'El uso por semana debe ser al menos 1.', 'Error de Entrada', 'Icon', 'error');
+        uialert(app.UIFigure, 'El uso por semana debe ser al menos 1.', 'Error de Entrada', 'Icon', 'error');
         return;
     elseif dia < 0 || noche < 0
-        uialert(app.P_Main, 'Los valores de uso en días y noches no pueden ser negativos.', 'Error de Entrada', 'Icon', 'error');
+        uialert(app.UIFigure, 'Los valores de uso en días y noches no pueden ser negativos.', 'Error de Entrada', 'Icon', 'error');
         return;
     elseif dia > 12 || noche > 12
-        uialert(app.P_Main, 'El uso durante el día y la noche no puede exceder de 12 horas.', 'Error de Entrada', 'Icon', 'error');
+        uialert(app.UIFigure, 'El uso durante el día y la noche no puede exceder de 12 horas.', 'Error de Entrada', 'Icon', 'error');
         return;
     elseif dia == 0 && noche == 0
-        uialert(app.P_Main, 'Al menos una de las horas de uso durante el día o la noche debe ser mayor que 0.', 'Error de Entrada', 'Icon', 'error');
+        uialert(app.UIFigure, 'Al menos una de las horas de uso durante el día o la noche debe ser mayor que 0.', 'Error de Entrada', 'Icon', 'error');
         return;
     elseif potencia <= 0
-        uialert(app.P_Main, 'La potencia debe ser mayor que cero.', 'Error de Entrada', 'Icon', 'error');
+        uialert(app.UIFigure, 'La potencia debe ser mayor que cero.', 'Error de Entrada', 'Icon', 'error');
         return;
     elseif cantidad < 0
-        uialert(app.P_Main, 'La cantidad no puede ser negativa.', 'Error de Entrada', 'Icon', 'error');
+        uialert(app.UIFigure, 'La cantidad no puede ser negativa.', 'Error de Entrada', 'Icon', 'error');
         return;
     elseif mod(cantidad, 1) ~= 0
-        uialert(app.P_Main, 'La cantidad debe ser un número entero sin decimales.', 'Error de Entrada', 'Icon', 'error');
+        uialert(app.UIFigure, 'La cantidad debe ser un número entero sin decimales.', 'Error de Entrada', 'Icon', 'error');
         return;
     elseif cantidad > 15
         % Confirmar si el usuario está seguro de ingresar una cantidad mayor a 15
         mensajeConfirmacion = sprintf('¿Estás seguro de ingresar %d electrodomésticos?', cantidad);
-        seleccion = uiconfirm(app.P_Main, mensajeConfirmacion, ...
+        seleccion = uiconfirm(app.UIFigure, mensajeConfirmacion, ...
             'Confirmación de Cantidad', 'Options', {'Sí', 'No'}, 'DefaultOption', 2, 'CancelOption', 2, ...
             'Icon', 'warning');
         
@@ -58,7 +58,7 @@ function Agregar_Electrodomestico(app)
             if strcmp(nombres_electrodomesticos{i}, electrodomestico) && potencias_electrodomesticos(i) == potencia
                 % Mostrar mensaje de error si se encuentra un electrodoméstico repetido
                 mensajeError = sprintf('El electrodoméstico "%s" con potencia %.2f ya existe en la tabla.', electrodomestico, potencia);
-                uialert(app.P_Main, mensajeError, 'Error de Entrada', 'Icon', 'error');
+                uialert(app.UIFigure, mensajeError, 'Error de Entrada', 'Icon', 'error');
                 return;
             end
         end
@@ -69,7 +69,7 @@ function Agregar_Electrodomestico(app)
     app.M1 = app.M1.I_Electrodomesticos(nuevoRegistro);
     
     % Mostrar mensaje de éxito con ícono de éxito
-    uialert(app.P_Main, 'Electrodoméstico agregado exitosamente.', 'Éxito', 'Icon', 'success');
+    uialert(app.UIFigure, 'Electrodoméstico agregado exitosamente.', 'Éxito', 'Icon', 'success');
 end
 
 %No retorna nada, solo añade el electrodomestico
