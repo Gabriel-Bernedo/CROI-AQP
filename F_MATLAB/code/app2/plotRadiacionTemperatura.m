@@ -1,9 +1,4 @@
 function plotRadiacionTemperatura(app)
-    % plotRadiacionTemperatura Grafica datos de radiación solar y temperatura.
-    % Esta función obtiene los datos de la clase M1_Calculadora_Consumo
-    % y los grafica en un eje con dos yy-axis en un componente UIAxes
-    % de App Designer.
-
     % Crear una instancia de la clase M1_Calculadora_Consumo
     calculadora = app.M1;
 
@@ -15,11 +10,15 @@ function plotRadiacionTemperatura(app)
     temperaturas = [datosRadiacion.temperatura];
     meses = {datosRadiacion.mes};
 
+    % Limpiar solo los datos gráficos existentes
+    delete(findall(app.G_RadTemp_Tendencias_1, 'Type', 'line')); % Elimina líneas
+    delete(findall(app.G_RadTemp_Tendencias_1, 'Type', 'text')); % Elimina texto, como etiquetas y leyendas
+
     % Configurar el eje izquierdo para la radiación solar
     yyaxis(app.G_RadTemp_Tendencias_1, 'left');
     plot(app.G_RadTemp_Tendencias_1, 1:length(meses), radiaciones, '-o', 'LineWidth', 1.5);
     ylabel(app.G_RadTemp_Tendencias_1, 'Radiación Solar (kWh/m^2)');
-    
+
     % Ampliar los márgenes superior e inferior del eje Y
     margen_superior = max(radiaciones) * 0.1;
     margen_inferior = min(radiaciones) * 0.1;
@@ -29,7 +28,7 @@ function plotRadiacionTemperatura(app)
     yyaxis(app.G_RadTemp_Tendencias_1, 'right');
     plot(app.G_RadTemp_Tendencias_1, 1:length(meses), temperaturas, '-x', 'LineWidth', 1.5);
     ylabel(app.G_RadTemp_Tendencias_1, 'Temperatura (°C)');
-    
+
     % Ampliar los márgenes superior e inferior del eje Y para la temperatura
     margen_superior_temp = max(temperaturas) * 0.1;
     margen_inferior_temp = min(temperaturas) * 0.1;
@@ -48,4 +47,7 @@ function plotRadiacionTemperatura(app)
 
     % Añadir una leyenda
     legend(app.G_RadTemp_Tendencias_1, {'Radiación Solar', 'Temperatura'});
+    
+    % Agregar descripción en el TextArea
+    app.TA_DescripcionAnalisisRadTemp_Tendencias_1.Value = 'La radiacion es optima para uso de Paneles Solares';
 end

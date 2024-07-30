@@ -152,11 +152,15 @@ function GraficoCostoKWH(app)
     % Limpiar el UIAxes antes de graficar
     cla(ax);
     
+    % Calcular el promedio de crecimiento anual
+    growth_rate = diff(avg_cost_per_year) ./ avg_cost_per_year(1:end-1);
+    avg_growth_per_year = mean(growth_rate) * 100; % Convertir a porcentaje
+
     % Graficar el costo promedio por año
     plot(ax, years, avg_cost_per_year, '-o', 'LineWidth', 2);
     xlabel(ax, 'Año');
     ylabel(ax, 'Costo Promedio KWH');
-    title(ax, 'Promedio del Costo por Hora de Energía Eléctrica (BT5B-Residencial)');
+    title(ax, 'Promedio del Costo por Hora de Energía Eléctrica');
     grid(ax, 'on');
     
     % Ajustar el tamaño de la fuente para mejorar la visibilidad
@@ -169,4 +173,8 @@ function GraficoCostoKWH(app)
     % Ajustar los límites del eje X e Y para mejorar la visualización
     xlim(ax, [min(years) max(years)]);
     ylim(ax, [min(avg_cost_per_year) max(avg_cost_per_year) * 1.1]); % Aumentar el margen en el eje Y, 10% más alto que el valor máximo
+
+    % Agregar descripción en el TextArea con el crecimiento promedio
+    app.TA_DescripcionAnalisisCostoMeses_Tendencias_1.Value = sprintf('Crecimiento promedio anual del costo KWH es: %.2f%%', avg_growth_per_year);
+
 end
