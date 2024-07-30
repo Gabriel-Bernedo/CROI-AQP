@@ -20,3 +20,9 @@ x = x.I_Electrodomesticos({"Batidora",1200,1,2,3,1,"Esencial"});
 %%
 x.usuario.electrodomesticos = x.Get_Electrodomesticos;
 x.usuario.Get_electrodomestico()
+
+%%
+y = [1 2 3 4];
+if isempty(y(y==10))
+    x = "hola"
+end
