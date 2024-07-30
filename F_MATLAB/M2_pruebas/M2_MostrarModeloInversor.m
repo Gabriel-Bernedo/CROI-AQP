@@ -53,15 +53,17 @@ function M2_MostrarModeloInversor(app)
 
     %SOLUCION SISTEMA YYYY
     app.MODELOEditField_3.Value = string(mostrar.modelo);
+    app.NumInversor.Value = 1; %siempre es un inversor no?
 
     %MOSTRAR HIBRIDO
-    app.Fi_Modelo_Inversor_2.Value = string(mostrar.modelo);
-    app.Fi_Potencia_Inversor_2.Value = mostrar.potencia;
-    app.Fi_VAdmisible_Inversor_2.Value = mostrar.voladmisible;
-    app.Fi_Costo_Inversor_2.Value = mostrar.costo;
-    app.Fi_Tiempo_Vida_Inversor_2.Value = mostrar.tvida;
+    app.Fi_Modelo_Inversor_2.Value = string(mostrar.modeloH);
+    app.Fi_Potencia_Inversor_2.Value = mostrar.potenciaH;
+    app.Fi_VAdmisible_Inversor_2.Value = mostrar.voladmisibleH;
+    app.Fi_Costo_Inversor_2.Value = mostrar.costoH;
+    app.Fi_Tiempo_Vida_Inversor_2.Value = mostrar.tvidaH;
     %SOLUCION HIBRIDO
-    app.MODELOEditField_6.Value = string(mostrar.modelo);
+    app.MODELOEditField_6.Value = string(mostrar.modeloH);
+    app.NumInversorH.Value = 1; %lo de arribax2
 
 end
 
@@ -82,6 +84,15 @@ function datos = obtenerDatosInversor()
     datos.costo = sel.InvCosMon;
     datos.tvida = sel.InvTieVid;
     datos.costoMan = sel.InvCosMan;
+    
+    sel2 = ambiente(3, :);
+
+    datos.modeloH = sel2.InvMod;
+    datos.potenciaH = sel2.InvPot;
+    datos.voladmisibleH = sel2.InvAdmVol;
+    datos.costoH = sel2.InvCosMon;
+    datos.tvidaH = sel2.InvTieVid;
+    datos.costoManH = sel2.InvCosMan;
 
     close(conn);
 end

@@ -43,9 +43,8 @@ function mostrar = mostrarTvida()
     mostrar = 150;
 end
 %}
-%posicion: 246,85,381,273
-%numero: 198,7,19,18
-%botones: 247,358,380,38
+%posicion de paneles en app: 246,85,381,273
+
 function M2_MostrarModeloPanel(app)
     %conectando BD para tabla 'panelsolar'
     mostrar = obtenerDatosPanel();
@@ -70,6 +69,7 @@ function M2_MostrarModeloPanel(app)
     
     %SOLUCION SISTEMA YYYY
     app.MODELOEditField.Value = string(mostrar.modelo);
+    app.NumPanel.Value = 2; %numerito cualquiera :v
     
     %MOSTRAR HIBRIDO
     app.Fi_Modelo_Panel_2.Value = string(mostrar.modelo);
@@ -79,8 +79,10 @@ function M2_MostrarModeloPanel(app)
     app.Fi_Alto_Panel_2.Value = mostrar.alto;
     app.Fi_Costo_Panel_2.Value = mostrar.costo;
     app.Fi_Tiempo_Vida_Panel_2.Value = mostrar.tvida;
+
     %SOLUCION HIBRIDO
     app.MODELOEditField_4.Value = string(mostrar.modelo);
+    app.NumPanelH.Value = 2; %numerito cualquiera x2 :v
 
 
 end
@@ -98,7 +100,7 @@ function datos = obtenerDatosPanel()
     
     datos.modelo = sel.PanMod;
     datos.potencia = sel.PanPot;
-    datos.voltaje = 0;
+    datos.voltaje = 24;
     datos.ancho = sel.PanAnc;
     datos.alto = sel.PanAlt;
     datos.costo = sel.PanCosMon;

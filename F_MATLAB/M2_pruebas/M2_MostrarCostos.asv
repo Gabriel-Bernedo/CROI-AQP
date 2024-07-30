@@ -61,6 +61,7 @@ function M2_MostrarCostos(app)
     disp(['costoPanel: ', num2str(costoPanel)]);
     disp(['costoPanelMantenimiento: ', num2str(costoPanelMantenimiento)]);
     disp(['costoBateria: ', num2str(costoBateria)]);
+    disp(['costoBateriaMantenimiento: ', num2str(costoBateriaMantenimiento)]);
     disp(['costoInversor: ', num2str(costoInversor)]);
     disp(['costoInversorMantenimiento: ', num2str(costoInversorMantenimiento)]);
 
