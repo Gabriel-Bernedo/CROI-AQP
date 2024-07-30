@@ -8,24 +8,20 @@ function M2_MostrarModeloBateria(app)
     app.Fi_Ancho_Bateria.Value = mostrar.ancho;
     app.Fi_Alto_Bateria.Value = mostrar.alto;
     app.Fi_Costo_Bateria.Value = mostrar.costo;
-    app.Fi_Voltaje_Bateria.Value = mostrar.vol;
+    app.Fi_Voltaje_Bateria.Value = mostrar.tvida;
     %{
     El field(campo) solo permite valor numerico, actualmente se cambio a
     TIPO, por lo que seria modificar a un field de textos, por ahora
-    comentado, se cambio tiempo de vida a VOLTAJE
+    comentado
     %}
 
     %parte SOLUCION
     app.MODELOEditField_2.Value = string(mostrar.modelo);
-    app.NumBateria.Value = 2; %numerito cualquiera :v
-
 
     %Datos para calcular costos
     global costoBateria;
     costoBateria = mostrar.costo;
 
-    global NumeroBateriaYYYY;
-    NumeroBateriaYYYY = app.NumBateria.Value;
 
 end
 
