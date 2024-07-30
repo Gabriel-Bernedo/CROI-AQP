@@ -36,12 +36,6 @@ end
 function M2_MostrarModeloInversor(app)
     mostrar = obtenerDatosInversor();
 
-    %Datos para calcular costos
-    global costoInversor;
-    costoInversor = mostrar.costo;
-
-    global costoInversorMantenimiento;
-    costoInversorMantenimiento = mostrar.costoMan;
 
     %   Detailed explanation goes here
     %MOSTRAR SISTEMA YYYY
@@ -65,6 +59,22 @@ function M2_MostrarModeloInversor(app)
     app.MODELOEditField_6.Value = string(mostrar.modeloH);
     app.NumInversorH.Value = 1; %lo de arribax2
 
+     %Datos para calcular costos
+    global costoInversor;
+    costoInversor = mostrar.costo;
+
+    global costoInversorH;
+    costoInversorH = mostrar.costoH;
+
+    global costoInversorMantenimiento;
+    costoInversorMantenimiento = mostrar.costoMan;
+
+    global NumeroInversorYYYY;
+    NumeroInversorYYYY = app.NumInversor.Value;
+
+    global NumeroInversorH;
+    NumeroInversorH = app.NumInversorH.Value;
+    
 end
 
 function datos = obtenerDatosInversor()
