@@ -49,13 +49,7 @@ function M2_MostrarModeloPanel(app)
     %conectando BD para tabla 'panelsolar'
     mostrar = obtenerDatosPanel();
     
-    %Datos para calcular costos
-    global costoPanel;
-    costoPanel = mostrar.costo;
-
-    global costoPanelMantenimiento;
-    costoPanelMantenimiento = mostrar.costoMan;
-
+    
 
     %asignar valores
     %MOSTRAR SISTEMA YYYY
@@ -84,7 +78,19 @@ function M2_MostrarModeloPanel(app)
     app.MODELOEditField_4.Value = string(mostrar.modelo);
     app.NumPanelH.Value = 2; %numerito cualquiera x2 :v
 
+    %Datos para calcular costos
+    global costoPanel;
+    costoPanel = mostrar.costo;
 
+    global costoPanelMantenimiento;
+    costoPanelMantenimiento = mostrar.costoMan;
+    
+    global NumeroPanelYYYY;
+    NumeroPanelYYYY = app.NumPanel.Value;
+
+    global NumeroPanelH;
+    NumeroPanelH = app.NumPanelH.Value;
+    
 end
 
 function datos = obtenerDatosPanel()

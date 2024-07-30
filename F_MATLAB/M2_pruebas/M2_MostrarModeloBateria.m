@@ -24,6 +24,8 @@ function M2_MostrarModeloBateria(app)
     global costoBateria;
     costoBateria = mostrar.costo;
 
+    global NumeroBateriaYYYY;
+    NumeroBateriaYYYY = app.NumBateria.Value;
 
 end
 
