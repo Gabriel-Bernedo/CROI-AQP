@@ -47,9 +47,11 @@ function plotRadiacionTemperatura(app)
     title(app.G_RadTemp_Tendencias_1, 'Relación entre Radiación Solar y Temperatura a lo largo de los Meses');
     xlabel(app.G_RadTemp_Tendencias_1, 'Meses');
     grid(app.G_RadTemp_Tendencias_1, 'on');
-
+     
     % Añadir una leyenda
     legend(app.G_RadTemp_Tendencias_1, {'Radiación Solar', 'Temperatura'});
+    % Agregar descripción en el TextArea
+    app.TA_DescripcionAnalisisRadTemp_Tendencias_1.Value = 'La radiacion es obtima para el uso de Paneles Solares';
 end
 
 %Retorna los datos para la gráfica

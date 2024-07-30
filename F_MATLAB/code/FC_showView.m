@@ -73,10 +73,18 @@ function x = FC_showView(app, view)
         app.P_CalcularConsumo_IngresarE_1.Visible = "off";
         app.P_ModificarElectrodomesticos_IngresarE_1.Visible = "on";
         app.P_Tendencias_1.Visible = 'off';
-
+    
+    case "1.2.5" % Nueva vista para acceder a ModificarElectrodomésticos desde Tendencias
+            app.P_inicio_1.Visible = 'off';
+            app.P_Anadir_IngresarE_1.Visible = 'off';
+            app.P_CalcularConsumo_IngresarE_1.Visible = 'off';
+            app.P_ModificarElectrodomesticos_IngresarE_1.Visible = 'on';
+            app.P_Botones_CalculadoraConsumo_1.Visible = 'on';
+            app.P_Tendencias_1.Visible = 'off';
+            app.P_Botones_Tendencias_1.Visible = 'off';
     case "1.3.1" % Click en Tendencias main
-        app.P_Tendencias_1.Visible = 'on';
         app.P_TendenciaProduccion_1.Visible = 'on';
+        app.P_Tendencias_1.Visible = 'on';
         app.P_Botones_Tendencias_1.Visible = 'on';
     case "1.3.2" % Click en Tendencias consumo
         app.P_TendenciaProduccion_1.Visible = 'on';

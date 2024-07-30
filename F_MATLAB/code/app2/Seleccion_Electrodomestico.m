@@ -17,8 +17,8 @@ function Seleccion_Electrodomestico(app)
     app.Fi_PotenciaEnWatts_IngresarE_1.Value = data.consumo_potencia_base;
     app.Fi_Cantidad_IngresarE_1.Value = 1;
     app.Fi_HorasNoche_1_IngresarE_1.Value = 0;
-    app.Fi_Uso_Semana_IngresarE_1.Value = 0;
-    app.Fi_HorasDias_IngresarE_1.Value = 0;
+    app.Fi_Uso_Semana_IngresarE_1.Value = 1;
+    app.Fi_HorasDias_IngresarE_1.Value = 1;
     
     % Llamar a la función para mostrar la imagen del electrodoméstico
     mostrar_Imagen(app, data.ambiente.nombre, data.base_codigo, app.Image9);

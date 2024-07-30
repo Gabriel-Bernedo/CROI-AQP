@@ -4,25 +4,27 @@ function GraficoConsumoTendencia(app)
     % Obtener todos los datos de la tabla
     datos = app.T_Electrodomesticos_Gestionar_1.Data;
 
-    % Verificar la estructura de los datos
-    disp('Datos de la tabla:');
-    disp(datos);
-    
-    % Verificar dimensiones
-    [numRows, numCols] = size(datos);
-    disp(['Número de filas: ', num2str(numRows)]);
-    disp(['Número de columnas: ', num2str(numCols)]);
+    % Verificar si hay datos
+    if isempty(datos)
+        disp('No hay datos disponibles para graficar.');
+        return; % Salir de la función si no hay datos
+    end
 
     % Verificar si las columnas necesarias existen
-    if numCols < 8
-        error('Los datos no contienen suficientes columnas.');
+    numCols = size(datos, 2);
+    if numCols < 5
+        disp('Los datos no contienen suficientes columnas.');
+        return; % Salir de la función si no hay suficientes columnas
     end
 
     % Extraer los datos de las columnas específicas
-    electrodomesticos = datos(:, 2); % Suponiendo que la columna 2 tiene los nombres
-    potencias = cell2mat(datos(:, 3)); % Suponiendo que la columna 3 tiene las potencias
-    horas_dia = cell2mat(datos(:, 4)); % Suponiendo que la columna 4 tiene las horas en el día
-    horas_noche = cell2mat(datos(:, 5)); % Suponiendo que la columna 5 tiene las horas en la noche
+    electrodomesticos = datos(:, 2); % columna 2 nombres
+    potencias = cell2mat(datos(:, 3)); % columna 3 tiene las potencias
+    horas_dia = cell2mat(datos(:, 4)); % columna 4 tiene las horas en el día
+    horas_noche = cell2mat(datos(:, 5)); % columna 5 tiene las horas en la noche
+
+    % Crear nombres únicos para las columnas de la tabla
+    nombres_unicos = makeUniqueColumnNames(electrodomesticos);
 
     % Inicializar la tabla de uso por hora
     horas = [6:23, 0:5]; % Horas del día y la noche
@@ -48,7 +50,7 @@ function GraficoConsumoTendencia(app)
     end
 
     % Convertir a tabla para visualización
-    t = array2table(uso_hora, 'VariableNames', electrodomesticos, 'RowNames', cellstr(num2str(horas')));
+    t = array2table(uso_hora, 'VariableNames', nombres_unicos, 'RowNames', cellstr(num2str(horas')));
     disp(t);
 
     % Crear un arreglo de horas ordenado
@@ -57,6 +59,9 @@ function GraficoConsumoTendencia(app)
     % Crear etiquetas para el eje X
     etiquetas_horas = {'6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', ...
                        '18', '19', '20', '21', '22', '23', '0', '1', '2', '3', '4', '5'};
+
+    % Calcular la potencia total consumida
+    potencia_total = sum(sum(uso_hora));
 
     % Graficar la suma de potencia por hora en el UIAxes de la aplicación
     ax = app.G_PvsT_Tendencias_1; % Obtener el UIAxes
@@ -70,7 +75,7 @@ function GraficoConsumoTendencia(app)
     % Configurar los ejes
     xticks(ax, horas_ordenadas); % Asegurarse de que todas las horas estén en el eje X
     xticklabels(ax, etiquetas_horas); % Asignar las etiquetas al eje X
-    xlabel(ax, 'Hora');
+    xlabel(ax, 'Hora Dia|Hora Noche');
     ylabel(ax, 'Potencia (W)');
     title(ax, 'Consumo de Potencia por Hora');
     grid(ax, 'on');
@@ -85,6 +90,24 @@ function GraficoConsumoTendencia(app)
     % Ajustar los límites del eje X e Y para mejorar la visualización
     xlim(ax, [0 23]); % Ajustar el margen en el eje X
     ylim(ax, [0 max(sum(uso_hora, 2)) * 1.1]); % Aumentar el margen en el eje Y, 10% más alto que el valor máximo
+
+    % Agregar descripción en el TextArea con la potencia total
+    app.TA_DescripcionAnalisisPvsT_Tendencias_1.Value = sprintf('La potencia total consumida en un dia es: %.2f W', potencia_total);
+end
+
+function uniqueNames = makeUniqueColumnNames(names)
+    % Generar nombres únicos para las columnas de la tabla
+    uniqueNames = names;
+    counts = containers.Map;
+    for i = 1:length(uniqueNames)
+        name = uniqueNames{i};
+        if isKey(counts, name)
+            counts(name) = counts(name) + 1;
+            uniqueNames{i} = sprintf('%s_%d', name, counts(name));
+        else
+            counts(name) = 1;
+        end
+    end
 end
 
 %Retorna los datos para la gráfica
