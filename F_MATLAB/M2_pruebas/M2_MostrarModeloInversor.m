@@ -1,38 +1,3 @@
-%{
-function M2_MostrarModeloInversor(app)
-%M2_MOSTRARMODELOINVERSOR Summary of this function goes here
-%   Detailed explanation goes here
-    app.Fi_Modelo_Inversor.Value = mostrarModelo();
-    app.Fi_Potencia_Inversor.Value = mostrarPotencia();
-    app.Fi_VAdmisible_Inversor.Value = mostrarVadmisible();
-    app.Fi_Costo_Inversor.Value = mostrarCosto();
-    app.Fi_Tiempo_Vida_Inversor.Value = mostrarTvida();
-
-    %parte INVERSOR
-    app.MODELOEditField_3.Value = mostrarModelo();
-end
-
-function mostrar = mostrarModelo()
-    mostrar = 'Inversor ModeloXX';
-end
-
-function mostrar = mostrarPotencia()
-    mostrar = 100;
-end
-
-function mostrar = mostrarVadmisible()
-    mostrar = 110;
-end
-
-function mostrar = mostrarCosto()
-    mostrar = 140;
-end
-
-function mostrar = mostrarTvida()
-    mostrar = 150;
-end
-%}
-
 function M2_MostrarModeloInversor(app)
     mostrar = obtenerDatosInversor();
 
@@ -56,7 +21,7 @@ function M2_MostrarModeloInversor(app)
     app.Fi_Costo_Inversor_2.Value = mostrar.costoH;
     app.Fi_Tiempo_Vida_Inversor_2.Value = mostrar.tvidaH;
     %SOLUCION HIBRIDO
-    %app.MODELOEditField_6.Value = string(mostrar.modeloH);
+    app.MODELOEditField_6.Value = string(mostrar.modeloH);
     app.NumInversorH.Value = 1; %lo de arribax2
 
      %Datos para calcular costos
