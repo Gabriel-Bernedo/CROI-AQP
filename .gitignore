@@ -1,1 +1,3 @@
 venv
+./env
+F_MATLAB/code/bd/conectarBD.m
